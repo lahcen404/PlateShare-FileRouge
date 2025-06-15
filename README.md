@@ -80,9 +80,13 @@ PlateShare est une application **web full stack** qui vise à réduire le gaspil
 ![image](https://github.com/user-attachments/assets/cd47a50d-24cd-472d-ab0b-ea441559779b)
 
 ### Sequence Diagram
-![image](https://github.com/user-attachments/assets/c9488981-901a-4435-8e8a-e29f582a497b)
+![image](https://github.com/user-attachments/assets/48fe3146-34f8-4c68-8cc1-09480336d741)
+---
+![image](https://github.com/user-attachments/assets/5929c81c-39dd-4f02-8048-618abb060706)
+---
+![image](https://github.com/user-attachments/assets/a994b3c2-5330-4727-a8e5-550eeeb39562)
 
-![image](https://github.com/user-attachments/assets/cfae6de4-d25a-420d-9ab8-eb0d9150b13a)
+
 
 
 ---

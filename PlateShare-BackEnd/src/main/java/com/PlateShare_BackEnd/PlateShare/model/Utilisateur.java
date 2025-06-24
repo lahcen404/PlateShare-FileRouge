@@ -151,4 +151,6 @@ public class Utilisateur {
         public void setEvaluationsDonnees(List<Evaluation> evaluationsDonnees) {
                 this.evaluationsDonnees = evaluationsDonnees;
         }
+
+
 }

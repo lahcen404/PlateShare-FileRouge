@@ -3,11 +3,12 @@ package com.PlateShare_BackEnd.PlateShare.model;
 import com.PlateShare_BackEnd.PlateShare.enums.TypeFood;
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "surplus")
+@Table(name = "surplus_items")
 public class Surplus {
 
     @Id
@@ -24,9 +25,8 @@ public class Surplus {
     @Column(nullable = false)
     private int quantite;
 
-    @Temporal(TemporalType.DATE)
     @Column(nullable = false)
-    private Date dateExpiration;
+    private LocalDate dateExpiration;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "donateur_id", nullable = false)
@@ -71,11 +71,11 @@ public class Surplus {
         this.quantite = quantite;
     }
 
-    public Date getDateExpiration() {
+    public LocalDate getDateExpiration() {
         return dateExpiration;
     }
 
-    public void setDateExpiration(Date dateExpiration) {
+    public void setDateExpiration(LocalDate dateExpiration) {
         this.dateExpiration = dateExpiration;
     }
 

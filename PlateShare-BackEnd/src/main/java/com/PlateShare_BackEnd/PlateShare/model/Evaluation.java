@@ -18,7 +18,6 @@ public class Evaluation {
     @Column(columnDefinition = "TEXT")
     private String commentaire;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false, updatable = false)
     private Date date;
 

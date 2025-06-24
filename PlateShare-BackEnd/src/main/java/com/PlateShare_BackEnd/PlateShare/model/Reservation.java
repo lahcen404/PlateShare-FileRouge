@@ -3,6 +3,7 @@ package com.PlateShare_BackEnd.PlateShare.model;
 import com.PlateShare_BackEnd.PlateShare.enums.Statut;
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -13,9 +14,8 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false, updatable = false)
-    private Date dateReservation;
+    private LocalDate dateReservation;
 
     @Column(nullable = false)
     private int quantite;
@@ -43,11 +43,11 @@ public class Reservation {
         this.id = id;
     }
 
-    public Date getDateReservation() {
+    public LocalDate getDateReservation() {
         return dateReservation;
     }
 
-    public void setDateReservation(Date dateReservation) {
+    public void setDateReservation(LocalDate dateReservation) {
         this.dateReservation = dateReservation;
     }
 

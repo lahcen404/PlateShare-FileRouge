@@ -5,5 +5,6 @@ import com.PlateShare_BackEnd.PlateShare.dto.LoginRequestDTO;
 import com.PlateShare_BackEnd.PlateShare.dto.RegisterDTO;
 
 public interface AuthService {
-
+   AuthResponseDTO register(RegisterDTO registerDTO);
+   AuthResponseDTO login(LoginRequestDTO loginRequestDTO);
 }

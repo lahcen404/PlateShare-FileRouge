@@ -34,7 +34,7 @@ public class AuthServiceImpl implements AuthService {
     public AuthResponseDTO register(RegisterDTO registerDTO) {
         Utilisateur utilisateur=new Utilisateur();
         utilisateur.setNom(registerDTO.nom());
-        utilisateur.setMotDePasse(registerDTO.motDePasse());
+        utilisateur.setMotDePasse(passwordEncoder.encode(registerDTO.motDePasse()));
         utilisateur.setEmail(registerDTO.email());
         utilisateur.setTelephone(registerDTO.telephone());
         utilisateur.setRole(registerDTO.role());
@@ -46,7 +46,7 @@ public class AuthServiceImpl implements AuthService {
         var savedUser = utilisateurRepository.save(utilisateur);
 
         var jwtToken = jwtService.generateToken(savedUser);
-        return new AuthResponseDTO(jwtToken);
+        return new AuthResponseDTO(jwtToken, savedUser.getRole().name());
     }
 
     @Override
@@ -61,6 +61,6 @@ public class AuthServiceImpl implements AuthService {
                 .orElseThrow(() -> new RuntimeException("user not found !! "));
 
         var jwtToken = jwtService.generateToken(utilisateur);
-        return new AuthResponseDTO(jwtToken);
+        return new AuthResponseDTO(jwtToken,utilisateur.getRole().name());
     }
 }

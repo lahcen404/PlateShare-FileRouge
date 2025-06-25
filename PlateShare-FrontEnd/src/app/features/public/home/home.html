@@ -1,1 +1,95 @@
-<p>home works!</p>
+<app-navbar></app-navbar>
+<!-- Main Content -->
+<main>
+  <!-- Hero Section -->
+  <section id="home" class="hero-section text-white h-[85vh] flex items-center">
+    <div class="container mx-auto px-6 text-center">
+      <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4">Connecting Communities, Reducing Waste.</h1>
+      <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-3xl mx-auto">PlateShare links those with surplus food to those in need. Join our mission to fight food waste and build a stronger, more sustainable community.</p>
+      <a href="#" class="px-8 py-4 text-lg font-semibold text-white bg-plateshare-green rounded-lg hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105 shadow-lg">
+        Get Started Now
+      </a>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section id="how-it-works" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="section-title text-3xl font-bold mb-12">How PlateShare Works</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <!-- Step 1 -->
+        <div class="flex flex-col items-center">
+          <div class="w-24 h-24 flex items-center justify-center bg-plateshare-green/10 text-plateshare-green rounded-full mb-4 text-4xl">
+            <i class="fas fa-store"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">1. Donors List Surplus</h3>
+          <p class="text-gray-600">Restaurants, supermarkets, and individuals easily publish their surplus food with details like type, quantity, and expiration.</p>
+        </div>
+        <!-- Step 2 -->
+        <div class="flex flex-col items-center">
+          <div class="w-24 h-24 flex items-center justify-center bg-plateshare-blue/10 text-plateshare-blue rounded-full mb-4 text-4xl">
+            <i class="fas fa-search-location"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">2. Requesters Find Food</h3>
+          <p class="text-gray-600">Charities and individuals in need search and filter available listings to find fresh, healthy food in their local area.</p>
+        </div>
+        <!-- Step 3 -->
+        <div class="flex flex-col items-center">
+          <div class="w-24 h-24 flex items-center justify-center bg-green-500/10 text-green-500 rounded-full mb-4 text-4xl">
+            <i class="fas fa-handshake-angle"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">3. Connect & Share</h3>
+          <p class="text-gray-600">Requesters reserve items and coordinate pickup, ensuring good food gets to people who need it, not to the landfill.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact / Statistics Section -->
+  <section class="py-20">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="section-title text-3xl font-bold mb-12">Our Impact</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="stat-item p-6">
+          <div class="stat-icon text-5xl text-gray-400 mb-3">
+            <i class="fas fa-utensils"></i>
+          </div>
+          <p class="text-4xl font-bold text-plateshare-green">10,000+</p>
+          <p class="text-gray-600">Meals Shared</p>
+        </div>
+        <div class="stat-item p-6">
+          <div class="stat-icon text-5xl text-gray-400 mb-3">
+            <i class="fas fa-leaf"></i>
+          </div>
+          <p class="text-4xl font-bold text-plateshare-green">5,000+ kg</p>
+          <p class="text-gray-600">Food Saved from Waste</p>
+        </div>
+        <div class="stat-item p-6">
+          <div class="stat-icon text-5xl text-gray-400 mb-3">
+            <i class="fas fa-users"></i>
+          </div>
+          <p class="text-4xl font-bold text-plateshare-green">1,200+</p>
+          <p class="text-gray-600">Happy Users</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section id="about" class="bg-plateshare-blue text-white py-20">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold mb-4">Ready to Make a Difference?</h2>
+      <p class="text-lg text-gray-200 mb-8 max-w-2xl mx-auto">Whether you have surplus to give or are in need of food, your participation helps build a better community. Join us today!</p>
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+        <a href="#" class="w-full sm:w-auto px-8 py-3 text-lg font-semibold bg-white text-plateshare-blue rounded-lg hover:bg-gray-200 transition-colors transform hover:scale-105">
+          <i class="fas fa-hand-holding-heart mr-2"></i> Join as a Donor
+        </a>
+        <a href="#" class="w-full sm:w-auto px-8 py-3 text-lg font-semibold bg-plateshare-green hover:bg-opacity-90 rounded-lg transition-colors transform hover:scale-105">
+          <i class="fas fa-shopping-basket mr-2"></i> Find Food
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+<app-footer></app-footer>

@@ -1,1 +1,61 @@
 /* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #ffffff;
+}
+
+/* Custom PlateShare Palette */
+:root {
+  --ps-green: #4CAF50;
+  --ps-teal-green: #00A674;
+  --ps-teal: #009995;
+  --ps-blue-teal: #008AAD;
+  --ps-blue: #0078B5;
+  --ps-dark-blue: #0063AC;
+}
+
+/* Home Page Stylee*/
+
+.bg-plateshare-green { background-color: var(--ps-green); }
+.text-plateshare-green { color: var(--ps-green); }
+.border-plateshare-green { border-color: var(--ps-green); }
+
+.bg-plateshare-blue { background-color: var(--ps-blue); }
+.text-plateshare-blue { color: var(--ps-blue); }
+
+.hero-section {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1974&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+}
+
+.section-title {
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background-color: var(--ps-green);
+  border-radius: 2px;
+}
+.stat-item:hover .stat-icon {
+  transform: scale(1.1);
+  color: var(--ps-green);
+}
+.stat-icon {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/*-------------------------------------------------------*/
+

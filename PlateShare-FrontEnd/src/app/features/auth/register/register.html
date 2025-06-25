@@ -1,1 +1,87 @@
-<p>register works!</p>
+
+<div class="bg-gray-100 flex items-center justify-center min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+  <div class="relative flex flex-col md:flex-row m-6 bg-white shadow-2xl rounded-2xl overflow-hidden max-w-4xl w-full">
+
+    <!-- Left Panel (Form) -->
+    <div class="flex flex-col justify-center p-8 md:p-12 w-full md:w-1/2">
+      <h2 class="font-bold text-3xl mb-5">Commencez Maintenant</h2>
+      <p class="text-gray-600 mb-8">Créez votre compte pour partager ou recevoir des surplus alimentaires.</p>
+
+      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="space-y-6">
+
+        <!-- Role Selection -->
+        <div>
+          <label class="block text-md font-semibold text-gray-800 mb-3">Je m'inscris en tant que :</label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <input type="radio" id="roleDonor" [value]="RoleEnum.DONATEUR" formControlName="role" class="peer sr-only">
+              <label for="roleDonor" class="flex flex-col items-center justify-center cursor-pointer rounded-lg border-2 border-gray-300 p-4 text-center hover:border-green-500 hover:bg-green-50 peer-checked:border-green-600 peer-checked:bg-green-100 peer-checked:text-green-700 transition-all duration-200 ease-in-out h-full">
+                <span class="text-lg font-medium">Donateur</span>
+                <span class="block text-xs text-gray-500 peer-checked:text-green-600 mt-1">(Restaurant/Fournisseur)</span>
+              </label>
+            </div>
+            <div>
+              <input type="radio" id="roleRequester" [value]="RoleEnum.DEMANDEUR" formControlName="role" class="peer sr-only">
+              <label for="roleRequester" class="flex flex-col items-center justify-center cursor-pointer rounded-lg border-2 border-gray-300 p-4 text-center hover:border-green-500 hover:bg-green-50 peer-checked:border-green-600 peer-checked:bg-green-100 peer-checked:text-green-700 transition-all duration-200 ease-in-out h-full">
+                <span class="text-lg font-medium">Demandeur</span>
+                <span class="block text-xs text-gray-500 peer-checked:text-green-600 mt-1"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Name Input -->
+        <div>
+          <label for="name" class="block text-sm font-medium text-gray-700">Nom</label>
+          <input type="text" id="name" formControlName="nom" placeholder="Entrez votre nom complet" class="mt-1 block w-full px-3 py-2.5 border border-gray-300 rounded-md shadow-sm">
+        </div>
+
+        <!-- Email Input -->
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">Adresse Email</label>
+          <input type="email" id="email" formControlName="email" placeholder="vous@example.com" class="mt-1 block w-full px-3 py-2.5 border border-gray-300 rounded-md shadow-sm">
+        </div>
+
+        <!-- Phone Input -->
+        <div>
+          <label for="phone" class="block text-sm font-medium text-gray-700">Numéro de Téléphone</label>
+          <input type="tel" id="phone" formControlName="telephone" placeholder="Entrez votre numéro de téléphone" class="mt-1 block w-full px-3 py-2.5 border border-gray-300 rounded-md shadow-sm">
+        </div>
+
+        <!-- Conditional Donor Fields using *ngIf -->
+        <div *ngIf="selectedRole === RoleEnum.DONATEUR" class="conditional-fields-container space-y-6">
+          <div>
+            <label for="restaurantName" class="block text-sm font-medium text-gray-700">Nom du Restaurant</label>
+            <input type="text" id="restaurantName" formControlName="nomRestaurant" placeholder="Le nom de votre restaurant" class="mt-1 block w-full px-3 py-2.5 border border-gray-300 rounded-md shadow-sm">
+          </div>
+          <div>
+            <label for="restaurantAddress" class="block text-sm font-medium text-gray-700">Adresse du Restaurant</label>
+            <input type="text" id="restaurantAddress" formControlName="adresse" placeholder="Rue, Ville, Code Postal" class="mt-1 block w-full px-3 py-2.5 border border-gray-300 rounded-md shadow-sm">
+          </div>
+        </div>
+
+        <!-- Password Input -->
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700">Mot de passe</label>
+          <input type="password" id="password" formControlName="motDePasse" placeholder="Entrez votre mot de passe" class="mt-1 block w-full px-3 py-2.5 border border-gray-300 rounded-md shadow-sm">
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+          S'inscrire
+        </button>
+      </form>
+
+      <p class="mt-8 text-xs text-center font-light text-gray-700">
+        Vous avez déjà un compte ?
+        <a routerLink="/auth/login" class="font-medium text-green-600 hover:text-green-500">Se connecter</a>
+      </p>
+    </div>
+
+    <!-- Right Panel (Image) -->
+    <div class="hidden md:block md:w-1/2">
+      <img src="https://i.postimg.cc/N08KJ8DW/log-register.jpg](https://i.postimg.cc/N08KJ8DW/log-register.jpg)" alt="Plat de nourriture saine et délicieuse" class="w-full h-full object-cover">
+    </div>
+
+  </div>
+</div>

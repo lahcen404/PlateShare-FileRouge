@@ -1,0 +1,19 @@
+
+.conditional-fields-container {
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+   input.ng-invalid.ng-touched {
+     border-color: #ef4444;
+   }

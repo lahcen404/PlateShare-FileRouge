@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {AuthResponse} from '../../models/AuthResponse';
 import {LoginRequest} from '../../models/LoginRequest';
+import {FormGroup} from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -15,14 +16,7 @@ export class AuthService {
 
 
   // Register
-  register(data:{
-    nom: string;
-    email: string;
-    motDePasse:string;
-    telephone: string;
-    role: string;
-    nomRestaurant?: string;
-    adresse?: string;}):Observable<AuthResponse>{
+  register(data: FormGroup):Observable<AuthResponse>{
     return  this.http.post<AuthResponse>(`${this.apiUrl}/register`, data);
   }
 

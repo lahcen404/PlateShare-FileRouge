@@ -1,22 +1,19 @@
-
 <body class="bg-gray-100 flex items-center justify-center min-h-screen py-12 px-4 sm:px-6 lg:px-8">
-<div class="page-background-title">Login</div>
-
-<div class="relative flex flex-col md:flex-row m-6 space-y-8 md:space-y-0 md:space-x-0 bg-white shadow-2xl rounded-2xl overflow-hidden max-w-4xl w-full">
-  <div class="form-container flex flex-col justify-center p-8 md:p-12 w-full md:w-1/2">
+<div class="relative flex flex-col md:flex-row m-6 bg-white shadow-2xl rounded-2xl overflow-hidden max-w-4xl w-full">
+  <div class="flex flex-col justify-center p-8 md:p-12 w-full md:w-1/2">
     <h2 class="font-bold text-3xl mb-4">Welcome Back!</h2>
     <p class="text-gray-600 mb-8">Login to access your PlateShare account.</p>
 
-    <form id="loginForm" class="space-y-6">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-6">
       <div>
         <label for="email" class="block text-sm font-medium text-gray-700">Email address</label>
-        <input type="email" id="email" name="email" placeholder="you@example.com" required
+        <input type="email" id="email" formControlName="email" placeholder="you@example.com" required
                class="mt-1 block w-full px-3 py-2.5 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm">
       </div>
 
       <div>
-        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-        <input type="password" id="password" name="password" placeholder="Enter your password" required
+        <label for="motDePasse" class="block text-sm font-medium text-gray-700">Password</label>
+        <input type="password" id="motDePasse" formControlName="motDePasse" placeholder="Enter your password" required
                class="mt-1 block w-full px-3 py-2.5 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm">
       </div>
 
@@ -29,55 +26,27 @@
         <a href="#" class="font-medium text-green-600 hover:text-green-500">Forgot password?</a>
       </div>
 
+      <!-- Error Message Display -->
+      <div *ngIf="loginError" class="p-3 bg-red-100 border border-red-400 text-red-700 rounded-md text-sm font-medium">
+        <i class="fas fa-exclamation-circle mr-2"></i>{{ loginError }}
+      </div>
+
       <button type="submit"
-              class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+              class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:opacity-50"
+              [disabled]="loginForm.invalid">
         Login
       </button>
     </form>
 
-    <div class="mt-8">
-      <div class="relative">
-        <div class="absolute inset-0 flex items-center">
-          <div class="w-full border-t border-gray-300"></div>
-        </div>
-        <div class="relative flex justify-center text-sm">
-          <span class="px-2 bg-white text-gray-500">Or continue with</span>
-        </div>
-      </div>
-
-      <div class="mt-6 grid grid-cols-2 gap-3">
-        <div>
-          <a href="#"
-             class="w-full inline-flex justify-center items-center py-2.5 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
-            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-              <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.477 0 10s4.477 10 10 10 10-4.477 10-10S15.523 0 10 0zM8.282 16.917A6.962 6.962 0 0110 17c1.653 0 3.167-.576 4.334-1.532l-1.51-1.51A4.984 4.984 0 0010 15c-1.65 0-3.073-.835-3.968-2.032H4.253C5.22 15.107 7.007 16.917 8.282 16.917zM17.547 8.253H10v3.5h4.333c-.18.95-.715 1.75-1.472 2.285l1.51 1.51C15.623 14.477 16.5 12.84 16.5 11c0-.93-.205-1.812-.57-2.617l1.617-1.617C17.822 7.15 18 6.13 18 5c0-.45-.045-.89-.133-1.315l-2.78 2.78c.11.27.18.562.18.867 0 .835-.334 1.585-.88 2.133H17.547v.000zM3.453 11.747A6.963 6.963 0 013 10c0-1.653.576-3.167 1.532-4.334l1.51 1.51A4.984 4.984 0 005 10c0 1.65.835 3.073 2.032 3.968H3.083c-.056-.233-.083-.472-.083-.72v0H3.453z" clip-rule="evenodd" />
-            </svg>
-            Google
-          </a>
-        </div>
-        <div>
-          <a href="#"
-             class="w-full inline-flex justify-center items-center py-2.5 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
-            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-              <path d="M10.323 0C7.543 0 5.882 1.656 5.882 4.031c0 1.476.763 2.997 1.907 3.918-1.44.898-2.553 2.454-2.553 4.386 0 2.791 2.124 4.669 4.947 4.669 1.314 0 2.396-.487 3.334-1.305a4.923 4.923 0 003.204 1.212c2.568 0 4.279-1.728 4.279-4.386s-1.711-4.386-4.28-4.386c-1.037 0-2.03.348-2.83.958-.93-.99-1.586-2.13-1.586-3.449C9.09 1.423 9.566.001 10.323 0zm.242 1.312c.53 0 .938.453.938.998 0 .678-.408 1.488-.998 1.488-.53 0-.938-.453-.938-.998 0-.678.408-1.488.998-1.488zm-.06 4.668c.938 0 2.03.575 2.03 1.908 0 1.245-.763 2.13-1.71 2.13-.938 0-2.03-.575-2.03-1.907 0-1.245.763-2.13 1.71-2.13z"/>
-            </svg>
-            Apple
-          </a>
-        </div>
-      </div>
-
-      <p class="mt-8 text-sm text-center font-light text-gray-700">
-        Don't have an account?
-        <a href="signup.html" class="font-medium text-green-600 hover:text-green-500">Sign up</a>
-
-      </p>
-    </div>
+    <p class="mt-8 text-sm text-center font-light text-gray-700">
+      Don't have an account?
+      <a routerLink="/auth/register" class="font-medium text-green-600 hover:text-green-500">Sign up</a>
+    </p>
   </div>
 
   <div class="hidden md:block md:w-1/2">
-    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D](https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
          alt="Food sharing concept" class="w-full h-full object-cover">
   </div>
 </div>
-
 </body>

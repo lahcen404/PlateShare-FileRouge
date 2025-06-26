@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {AuthResponse} from '../../models/AuthResponse';
 import {LoginRequest} from '../../models/LoginRequest';
 import {FormGroup} from '@angular/forms';
@@ -9,6 +9,7 @@ import {FormGroup} from '@angular/forms';
   providedIn: 'root'
 })
 export class AuthService {
+
 
   private apiUrl='http://localhost:8080/api/auth';
   private TOKEN_KEY = 'auth-token';
@@ -22,8 +23,9 @@ export class AuthService {
 
   //Login
   login(data:LoginRequest):Observable<AuthResponse>{
-    return this.http.post<AuthResponse>(`${this.apiUrl}/authenticate`, data);
+    return this.http.post<AuthResponse>(`${this.apiUrl}/login`, data);
   }
+
 
   saveAuth(res: AuthResponse) {
     console.log('Saved role:', res.role);

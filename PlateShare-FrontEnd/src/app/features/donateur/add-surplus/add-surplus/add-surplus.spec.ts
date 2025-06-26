@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PublishSurplus } from './publish-surplus';
+import { AddSurplus } from './add-surplus';
 
-describe('PublishSurplus', () => {
-  let component: PublishSurplus;
-  let fixture: ComponentFixture<PublishSurplus>;
+describe('AddSurplus', () => {
+  let component: AddSurplus;
+  let fixture: ComponentFixture<AddSurplus>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PublishSurplus]
+      imports: [AddSurplus]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PublishSurplus);
+    fixture = TestBed.createComponent(AddSurplus);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

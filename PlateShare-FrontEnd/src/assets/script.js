@@ -15,3 +15,25 @@ function toggleDonorFields() {
 }
 document.addEventListener('DOMContentLoaded', toggleDonorFields);
 /*-------------------*/
+/*------add surplus------*/
+
+document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+// Mobile menu toggle
+const mobileMenuButton = document.getElementById('mobileMenuButton');
+const closeMobileMenuButton = document.getElementById('closeMobileMenuButton');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileMenuBackdrop = document.getElementById('mobileMenuBackdrop');
+
+if (mobileMenuButton && mobileMenu && closeMobileMenuButton && mobileMenuBackdrop) {
+  mobileMenuButton.addEventListener('click', () => {
+    mobileMenu.classList.remove('hidden');
+  });
+  closeMobileMenuButton.addEventListener('click', () => {
+    mobileMenu.classList.add('hidden');
+  });
+  mobileMenuBackdrop.addEventListener('click', () => {
+    mobileMenu.classList.add('hidden');
+  });
+}
+/*-------------------*/

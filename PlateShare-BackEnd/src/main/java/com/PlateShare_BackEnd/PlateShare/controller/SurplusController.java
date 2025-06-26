@@ -6,6 +6,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,7 +24,8 @@ public class SurplusController {
     }
 
     // create surplus
-    @PostMapping
+    @PreAuthorize("hasAnyAuthority('DONATEUR', 'ADMIN')")
+    @PostMapping("/create")
     public ResponseEntity<SurplusDTO> createSurplus(@Valid @RequestBody SurplusDTO surplusDTO){
         SurplusDTO createdSurplus = surplusService.createSurplus(surplusDTO);
         return new ResponseEntity<>(createdSurplus, HttpStatus.CREATED) ;

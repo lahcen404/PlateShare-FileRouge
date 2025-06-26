@@ -4,6 +4,7 @@ import com.PlateShare_BackEnd.PlateShare.security.JwtAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -17,8 +18,11 @@ import java.util.Arrays;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
+
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity
+
 public class SecurityConfig {
 
     private final JwtAuthenticationFilter jwtAuthFilter;
@@ -44,9 +48,10 @@ public class SecurityConfig {
                 .cors(withDefaults())
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**").permitAll()         // allow public access to  login & register
-                        .requestMatchers(SWAGGER_WHITELIST).permitAll()
-                        .anyRequest().authenticated()                        // other request must be authenticated
+                        .requestMatchers("/api/auth/**").permitAll() // allow public access to  login & register
+                        .
+                        requestMatchers(SWAGGER_WHITELIST).permitAll()
+                        .anyRequest().authenticated()   // other request must be authenticated
 
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

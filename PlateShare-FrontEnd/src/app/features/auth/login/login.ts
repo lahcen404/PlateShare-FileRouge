@@ -3,13 +3,17 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {AuthService} from '../../../core/services/auth/AuthService';
 import {Router, RouterLink} from '@angular/router';
 import {NgIf} from '@angular/common';
+import {Footer} from '../../../shared/components/footer/footer';
+import {Navbar} from '../../../shared/components/navbar/navbar';
 
 @Component({
   selector: 'app-login',
   imports: [
     RouterLink,
     ReactiveFormsModule,
-    NgIf
+    NgIf,
+    Footer,
+    Navbar
   ],
   templateUrl: './login.html',
   styleUrl: './login.css'

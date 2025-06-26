@@ -4,13 +4,17 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {Role} from '../../../core/models/role';
 import {NgIf} from '@angular/common';
 import {AuthService} from '../../../core/services/auth/AuthService';
+import {Footer} from '../../../shared/components/footer/footer';
+import {Navbar} from '../../../shared/components/navbar/navbar';
 
 @Component({
   selector: 'app-register',
   imports: [
     RouterLink,
     ReactiveFormsModule,
-    NgIf
+    NgIf,
+    Footer,
+    Navbar
   ],
   templateUrl: './register.html',
   styleUrl: './register.css'

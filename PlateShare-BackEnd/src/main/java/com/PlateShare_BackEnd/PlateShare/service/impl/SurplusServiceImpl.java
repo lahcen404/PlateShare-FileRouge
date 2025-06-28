@@ -41,6 +41,17 @@ public class SurplusServiceImpl implements SurplusService {
         return toDto(savedSurplus);
     }
 
+    public Surplus updateSurplus(Long id , Surplus surplusDetails){
+
+        Surplus surplus = surplusRepository.findById(id).orElseThrow();
+        surplus.setNom(surplusDetails.getNom());
+        surplus.setQuantite(surplusDetails.getQuantite());
+        surplus.setType(surplusDetails.getType());
+        surplus.setDateExpiration(surplusDetails.getDateExpiration());
+
+        return surplusRepository.save(surplus);
+    }
+
 
     @Override
     public SurplusDTO getSurplusById(Long id) {
@@ -65,8 +76,8 @@ public class SurplusServiceImpl implements SurplusService {
     private SurplusDTO toDto(Surplus surplus) {
         return new SurplusDTO(
                 surplus.getId(),
-                surplus.getDonateur().getNom(), // Get the donor's name
-                surplus.getDonateur().getNomRestaurant(), // Get the restaurant name
+                surplus.getDonateur().getNom(),
+                surplus.getDonateur().getNomRestaurant(),
                 surplus.getNom(),
                 surplus.getType(),
                 surplus.getQuantite(),

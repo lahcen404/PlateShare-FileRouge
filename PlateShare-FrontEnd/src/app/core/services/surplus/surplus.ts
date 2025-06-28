@@ -18,4 +18,12 @@ export class SurplusService {
   getAllSurplus(): Observable<Surplus[]>{
     return this.http.get<Surplus[]>(this.apiUrl);
   }
+
+  updateSurplus(id: number , surplus:Surplus): Observable<Surplus>{
+    return this.http.put<Surplus>(`${this.apiUrl}/update/${id}`, surplus)
+  }
+
+  getSurplusById(id:number):Observable<Surplus>{
+    return this.http.get<Surplus>(`${this.apiUrl}/${id}`);
+  }
 }

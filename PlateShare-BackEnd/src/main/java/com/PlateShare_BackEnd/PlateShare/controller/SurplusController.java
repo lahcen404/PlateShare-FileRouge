@@ -1,6 +1,7 @@
 package com.PlateShare_BackEnd.PlateShare.controller;
 
 import com.PlateShare_BackEnd.PlateShare.dto.SurplusDTO;
+import com.PlateShare_BackEnd.PlateShare.model.Surplus;
 import com.PlateShare_BackEnd.PlateShare.service.SurplusService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +25,23 @@ public class SurplusController {
     }
 
     // create surplus
-    @PreAuthorize("hasAnyAuthority('DONATEUR', 'ADMIN')")
+    @PreAuthorize("hasAuthority('DONATEUR')")
     @PostMapping("/create")
     public ResponseEntity<SurplusDTO> createSurplus(@Valid @RequestBody SurplusDTO surplusDTO){
         SurplusDTO createdSurplus = surplusService.createSurplus(surplusDTO);
         return new ResponseEntity<>(createdSurplus, HttpStatus.CREATED) ;
+    }
+
+    @PreAuthorize("hasAuthority('DONATEUR')")
+    @PutMapping("/update/{id}")
+    public Surplus updateSurplus(@PathVariable Long id, @RequestBody Surplus surplus){
+        return surplusService.updateSurplus(id,surplus);
+    }
+
+    @PreAuthorize("hasAuthority('DONATEUR')")
+    @GetMapping("/{id}")
+    public SurplusDTO getSurplusById(@PathVariable Long id){
+        return surplusService.getSurplusById(id);
     }
 
     //get all surplus

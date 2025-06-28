@@ -14,4 +14,8 @@ export class SurplusService {
   addSurplus(surplus:Surplus): Observable<Surplus>{
     return this.http.post<Surplus>(`${this.apiUrl}/create`,surplus)
   }
+
+  getAllSurplus(): Observable<Surplus[]>{
+    return this.http.get<Surplus[]>(this.apiUrl);
+  }
 }

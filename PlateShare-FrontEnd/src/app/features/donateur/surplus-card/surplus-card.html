@@ -1,0 +1,33 @@
+<div class="surplus-item-card bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
+
+  <div *ngIf="surplus.type === TypeFoodEnum.BOULANGERIE">
+    <img src="https://placehold.co/400x200?text=Boulangerie" alt="Boulangerie" class="w-full h-48 object-cover">
+  </div>
+
+  <div *ngIf="surplus.type === TypeFoodEnum.VIANDE">
+    <img src="https://placehold.co/400x200?text=Viande" alt="Viande" class="w-full h-48 object-cover">
+  </div>
+
+  <div *ngIf="surplus.type === TypeFoodEnum.FRUITS">
+    <img src="https://placehold.co/400x200?text=Fruits" alt="Fruits" class="w-full h-48 object-cover">
+  </div>
+
+  <div *ngIf="surplus.type === TypeFoodEnum.PRODUITS_LAITIERS">
+    <img src="https://placehold.co/400x200?text=Produits+Laitiers" alt="Produits Laitiers" class="w-full h-48 object-cover">
+  </div>
+
+  <div *ngIf="surplus.type === TypeFoodEnum.LEGUMES">
+    <img src="https://placehold.co/400x200?text=Légumes" alt="Légumes" class="w-full h-48 object-cover">
+  </div>
+
+  <!-- Content -->
+  <div class="p-4 flex flex-col flex-grow">
+    <h3 class="text-lg font-semibold text-gray-800 mb-1">{{ surplus.nom }}</h3>
+    <p class="text-sm text-gray-600 mb-1"><span class="font-medium">Quantity :</span> {{ surplus.quantite }}</p>
+    <p class="text-sm text-gray-600 mb-3"><span class="font-medium">Expires:</span> {{ surplus.dateExpiration }}</p>
+    <span class="tag text-xs font-semibold px-2 py-0.5 rounded-full self-start mb-3">{{ surplus.type }}</span>
+    <button class="action-button mt-auto w-full bg-plateshare-green hover:bg-opacity-90 text-white px-4 py-2 rounded-md text-sm font-medium">
+      <i class="fas fa-shopping-basket mr-2"></i>Reserve Now
+    </button>
+  </div>
+</div>

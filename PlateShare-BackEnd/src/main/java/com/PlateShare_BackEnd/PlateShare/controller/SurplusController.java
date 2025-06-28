@@ -38,6 +38,12 @@ public class SurplusController {
         return surplusService.updateSurplus(id,surplus);
     }
 
+    @PreAuthorize("hasAuthority('DONATEUR')")
+    @GetMapping("/{id}")
+    public SurplusDTO getSurplusById(@PathVariable Long id){
+        return surplusService.getSurplusById(id);
+    }
+
     //get all surplus
     @GetMapping
     public List<SurplusDTO> getAllSurplus(){

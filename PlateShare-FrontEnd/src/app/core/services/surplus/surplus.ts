@@ -26,4 +26,9 @@ export class SurplusService {
   getSurplusById(id:number):Observable<Surplus>{
     return this.http.get<Surplus>(`${this.apiUrl}/${id}`);
   }
+
+  deleteSurplus(id: number ): Observable<void>{
+    return this.http.delete<void>(`${this.apiUrl}/delete/${id}`)
+  }
+
 }

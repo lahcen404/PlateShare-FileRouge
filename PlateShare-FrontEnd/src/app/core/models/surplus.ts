@@ -1,7 +1,7 @@
 import {TypeFood} from './typeFood';
 
 export interface Surplus{
-  id?:number;
+  id:number;
   nom:string;
   type:TypeFood;
   quantite:number;

@@ -34,8 +34,9 @@ public class SurplusController {
 
     @PreAuthorize("hasAuthority('DONATEUR')")
     @PutMapping("/update/{id}")
-    public Surplus updateSurplus(@PathVariable Long id, @RequestBody Surplus surplus){
-        return surplusService.updateSurplus(id,surplus);
+    public ResponseEntity<SurplusDTO> updateSurplus(@PathVariable Long id, @Valid @RequestBody SurplusDTO surplusDTO) {
+        SurplusDTO updatedSurplus = surplusService.updateSurplus(id, surplusDTO);
+        return ResponseEntity.ok(updatedSurplus);
     }
 
     @PreAuthorize("hasAuthority('DONATEUR')")

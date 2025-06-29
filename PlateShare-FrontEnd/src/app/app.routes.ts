@@ -6,6 +6,7 @@ import {AddSurplus} from './features/donateur/add-surplus/add-surplus';
 import {SurplusCard} from './features/donateur/surplus-card/surplus-card';
 import {SurplusList} from './features/demandeur/surplus-list/surplus-list';
 import {SurplusUpdate} from './features/donateur/surplus-update/surplus-update';
+import {SurplusMylist} from './features/donateur/surplus-mylist/surplus-mylist';
 
 export const routes: Routes = [
 
@@ -15,6 +16,7 @@ export const routes: Routes = [
   {path: 'register', component: Register},
   {path: 'add-surplus', component: AddSurplus},
   {path: 'surplus-list', component: SurplusList},
+  {path: 'donateur/surplus-list', component: SurplusMylist},
   {path: 'surplus/update/:id', component: SurplusUpdate}
 
 ];

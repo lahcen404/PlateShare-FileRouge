@@ -1,0 +1,139 @@
+<body class="flex min-h-screen">
+
+<!-- Sidebar for Donor -->
+<aside class="w-60 bg-gradient-to-b from-[#008AAD] to-[#0063AC] text-white flex-col shadow-lg fixed inset-y-0 left-0 z-30 hidden md:flex">
+  <!-- Logo/Brand -->
+  <div class="p-6 text-center border-b border-white/20">
+    <a href="donor_dashboard_page.html" class="text-2xl font-extrabold tracking-tight">
+      Plate<span class="text-[#4CAF50]">Share</span>
+    </a>
+    <p class="text-xs text-white/70 mt-1">Donor Panel</p>
+  </div>
+
+  <!-- Navigation Links -->
+  <nav class="flex-1 px-3 py-5 space-y-1.5">
+    <a href="#" class="sidebar-link flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200">
+      <i class="fas fa-tachometer-alt w-5 h-5 mr-3"></i>
+      Dashboard
+    </a>
+    <a routerLink="/add-surplus" class="sidebar-link flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200">
+      <i class="fas fa-plus-circle w-5 h-5 mr-3"></i>
+      Add New Surplus
+    </a>
+    <a routerLink="/donateur/surplus-list" class="sidebar-link active flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200">
+      <i class="fas fa-list-alt w-5 h-5 mr-3"></i>
+      My Listings
+    </a>
+    <a href="#" class="sidebar-link flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200">
+      <i class="fas fa-star w-5 h-5 mr-3"></i>
+      My Evaluations
+    </a>
+    <a href="#" class="sidebar-link flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200">
+      <i class="fas fa-user-edit w-5 h-5 mr-3"></i>
+      Edit Profile
+    </a>
+  </nav>
+
+  <!-- Sidebar Footer -->
+  <div class="p-4 border-t border-white/20 mt-auto">
+    <a (click)="logout()" href="#" class="flex items-center justify-center text-sm text-white/80 hover:text-white transition-colors cursor-pointer">
+      <i class="fas fa-sign-out-alt w-5 h-5 mr-2"></i>
+      Logout
+    </a>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<main class="flex-1 md:ml-60 flex flex-col">
+  <!-- Top Navbar for Donor -->
+  <nav class="bg-white shadow-sm sticky top-0 z-20">
+    <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="md:hidden">
+          <button id="mobileMenuButton" class="text-gray-500 hover:text-green-500 focus:outline-none">
+            <i class="fas fa-bars fa-lg"></i>
+          </button>
+        </div>
+        <div class="hidden sm:flex flex-shrink-0">
+          <span class="text-xl font-semibold text-gray-700">My Surplus Listings</span>
+        </div>
+        <div class="flex items-center space-x-4">
+          <button class="text-gray-500 hover:text-green-500 relative">
+            <i class="fas fa-bell fa-lg"></i>
+            <span class="absolute -top-1 -right-1 flex h-3 w-3">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                            </span>
+          </button>
+          <div class="flex items-center cursor-pointer group">
+            <img class="h-9 w-9 rounded-full object-cover mr-2 border-2 border-transparent group-hover:border-green-500 transition-colors" src="https://placehold.co/100x100/00A674/FFFFFF?text=D" alt="Donor Avatar">
+            <div>
+              <span class="text-sm font-medium text-gray-700 hidden sm:block">GreenLeaf Cafe</span>
+              <span class="text-xs text-gray-500 hidden sm:block">Donor</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- Top Navbar for Donor -->
+  <nav class="bg-white shadow-sm sticky top-0 z-20">
+    <!-- Navbar content goes here -->
+  </nav>
+
+  <!-- Page Content Wrapper -->
+  <div class="flex-grow p-4 sm:p-6 md:p-8 bg-gray-50">
+    <!-- Header & Add New Button -->
+    <header class="mb-6 flex flex-col sm:flex-row justify-between items-center">
+      <div>
+        <h1 class="text-2xl sm:text-3xl font-bold text-gray-800">
+          My Surplus Listings
+        </h1>
+        <p class="text-gray-600 mt-1">View and manage your food contributions.</p>
+      </div>
+      <a routerLink="/add-surplus" class="mt-4 sm:mt-0 bg-plateshare-green hover:bg-opacity-90 text-white px-5 py-2.5 rounded-lg text-sm font-semibold flex items-center shadow-md hover:shadow-lg transition-all duration-200">
+        <i class="fas fa-plus-circle mr-2"></i> Add New Surplus
+      </a>
+    </header>
+
+    <!-- Filters -->
+    <div class="mb-6 flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-3">
+      <label for="statusFilter" class="text-sm font-medium text-gray-700">Filter by status:</label>
+      <select id="statusFilter" name="statusFilter" class="form-input border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-green-500 focus:border-green-500 text-sm">
+        <option value="all">All My Listings</option>
+        <option value="active">Active</option>
+        <option value="reserved">Reserved</option>
+        <option value="expired">Expired</option>
+      </select>
+    </div>
+
+    <!-- Surplus Listings Grid -->
+    <section>
+      <h2 class="text-xl font-semibold text-gray-700 mb-4">Available Listings</h2>
+
+      <div *ngIf="error" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-md">
+        <strong>Error:</strong> {{ error }}
+      </div>
+
+      <div *ngIf="surplus$ | async as surplusItems; else loading" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <app-surplus-card *ngFor="let item of surplusItems" [surplus]="item"></app-surplus-card>
+
+        <div *ngIf="surplusItems.length === 0 && !error" class="col-span-full text-center py-10">
+          <p class="text-gray-500">No surplus items are available at the moment. Please check back later!</p>
+        </div>
+      </div>
+
+      <ng-template #loading>
+        <div *ngIf="!error" class="text-center py-10">
+          <p class="text-gray-500">Loading surplus items...</p>
+        </div>
+      </ng-template>
+    </section>
+
+    <!-- Pagination -->
+
+  </div>
+
+</main>
+
+</body>

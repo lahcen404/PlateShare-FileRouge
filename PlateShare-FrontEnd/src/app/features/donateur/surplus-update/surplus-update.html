@@ -12,23 +12,23 @@
 
   <!-- Navigation Links -->
   <nav class="flex-1 px-3 py-5 space-y-1.5">
-    <a href="donor_dashboard_page.html" class="sidebar-link flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200">
+    <a href="#" class="sidebar-link flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200">
       <i class="fas fa-tachometer-alt w-5 h-5 mr-3"></i>
       Dashboard
     </a>
-    <a href="add_surplus_page.html" class="sidebar-link flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200">
+    <a routerLink="/add-surplus" class="sidebar-link flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200">
       <i class="fas fa-plus-circle w-5 h-5 mr-3"></i>
       Add New Surplus
     </a>
-    <a href="my_listings_page.html" class="sidebar-link flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200">
+    <a routerLink="/donateur/surplus-list" class="sidebar-link  flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200">
       <i class="fas fa-list-alt w-5 h-5 mr-3"></i>
       My Listings
     </a>
-    <a href="my_evaluations_donor_page.html" class="sidebar-link flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200">
+    <a href="#" class="sidebar-link flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200">
       <i class="fas fa-star w-5 h-5 mr-3"></i>
       My Evaluations
     </a>
-    <a href="edit_profile_donor_page.html" class="sidebar-link flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200">
+    <a href="#" class="sidebar-link flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200">
       <i class="fas fa-user-edit w-5 h-5 mr-3"></i>
       Edit Profile
     </a>
@@ -36,7 +36,7 @@
 
   <!-- Sidebar Footer -->
   <div class="p-4 border-t border-white/20 mt-auto">
-    <a href="#" class="flex items-center justify-center text-sm text-white/80 hover:text-white transition-colors">
+    <a (click)="logout()" href="#" class="flex items-center justify-center text-sm text-white/80 hover:text-white transition-colors cursor-pointer">
       <i class="fas fa-sign-out-alt w-5 h-5 mr-2"></i>
       Logout
     </a>
@@ -154,12 +154,10 @@
         </div>
 
 
-        <div class="flex flex-col sm:flex-row sm:justify-between items-center pt-6 gap-4">
-          <button type="button" class="action-button delete-button w-full sm:w-auto text-white px-6 py-2.5 rounded-lg text-sm font-semibold flex items-center justify-center shadow-md hover:shadow-lg">
-            <i class="fas fa-trash-alt mr-2"></i> Delete Surplus
-          </button>
+        <div class="flex ml-50 flex-col sm:flex-row sm:justify-between items-center pt-6 gap-4">
+
           <div class="flex flex-col sm:flex-row sm:space-x-4 space-y-3 sm:space-y-0 w-full sm:w-auto">
-            <button type="button" class="action-button w-full sm:w-auto bg-gray-200 hover:bg-gray-300 text-gray-700 px-6 py-2.5 rounded-lg text-sm font-semibold shadow-sm">
+            <button routerLink="/donateur/surplus-list" type="button" class="action-button w-full sm:w-auto bg-gray-200 hover:bg-gray-300 text-gray-700 px-6 py-2.5 rounded-lg text-sm font-semibold shadow-sm">
               Cancel
             </button>
             <button type="submit" class="action-button w-full sm:w-auto bg-plateshare-green hover:bg-opacity-90 text-white px-6 py-2.5 rounded-lg text-sm font-semibold flex items-center justify-center shadow-md hover:shadow-lg">

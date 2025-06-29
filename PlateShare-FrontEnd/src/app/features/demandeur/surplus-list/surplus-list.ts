@@ -4,6 +4,8 @@ import {Surplus} from '../../../core/models/surplus';
 import {SurplusService} from '../../../core/services/surplus/surplus';
 import {CommonModule, NgForOf} from '@angular/common';
 import {catchError, Observable, of, tap} from 'rxjs';
+import {AuthService} from '../../../core/services/auth/AuthService';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-surplus-list',
@@ -22,10 +24,17 @@ export class SurplusList implements OnInit{
   surplus$!: Observable<Surplus[]>;
   error: string | null = null;
 
-  constructor(private surplusService: SurplusService) {}
+  constructor(private surplusService: SurplusService,
+              private authService: AuthService,
+              private router:Router) {}
 
   ngOnInit(): void {
     this.loadSurplus();
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 
   private loadSurplus(): void {

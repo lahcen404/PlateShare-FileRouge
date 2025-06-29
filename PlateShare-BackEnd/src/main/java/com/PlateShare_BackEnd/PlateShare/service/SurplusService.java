@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface SurplusService {
     SurplusDTO createSurplus(SurplusDTO surplusDTO);
-    public Surplus updateSurplus(Long id , Surplus surplusDetails);
-        SurplusDTO getSurplusById(Long id);
+    SurplusDTO updateSurplus(Long id, SurplusDTO surplusDTO);
+    SurplusDTO getSurplusById(Long id);
     List<SurplusDTO> getAllSurplus();
     void deleteSurplus(Long id);
 

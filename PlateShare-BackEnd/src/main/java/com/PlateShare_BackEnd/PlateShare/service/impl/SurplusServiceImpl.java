@@ -41,15 +41,19 @@ public class SurplusServiceImpl implements SurplusService {
         return toDto(savedSurplus);
     }
 
-    public Surplus updateSurplus(Long id , Surplus surplusDetails){
+    @Override
+    public SurplusDTO updateSurplus(Long id, SurplusDTO surplusDTO) {
+        Surplus existingSurplus = surplusRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("suurplus not found with id: " + id));
 
-        Surplus surplus = surplusRepository.findById(id).orElseThrow();
-        surplus.setNom(surplusDetails.getNom());
-        surplus.setQuantite(surplusDetails.getQuantite());
-        surplus.setType(surplusDetails.getType());
-        surplus.setDateExpiration(surplusDetails.getDateExpiration());
+        existingSurplus.setNom(surplusDTO.nom());
+        existingSurplus.setType(surplusDTO.type());
+        existingSurplus.setQuantite(surplusDTO.quantite());
+        existingSurplus.setDateExpiration(surplusDTO.dateExpiration());
 
-        return surplusRepository.save(surplus);
+        Surplus updatedSurplus = surplusRepository.save(existingSurplus);
+
+        return toDto(updatedSurplus);
     }
 
 

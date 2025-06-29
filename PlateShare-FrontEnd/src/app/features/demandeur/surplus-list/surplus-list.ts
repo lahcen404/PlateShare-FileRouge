@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {SurplusCard} from '../surplus-card/surplus-card';
+import {SurplusCard} from '../../donateur/surplus-card/surplus-card';
 import {Surplus} from '../../../core/models/surplus';
 import {SurplusService} from '../../../core/services/surplus/surplus';
 import {CommonModule, NgForOf} from '@angular/common';

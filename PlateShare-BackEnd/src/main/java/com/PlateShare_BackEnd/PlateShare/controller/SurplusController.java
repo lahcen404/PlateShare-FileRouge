@@ -50,4 +50,11 @@ public class SurplusController {
     public List<SurplusDTO> getAllSurplus(){
         return  surplusService.getAllSurplus();
     }
+
+    // delete
+    @PreAuthorize("hasAuthority('DONATEUR')")
+    @DeleteMapping("/delete/{id}")
+    public void  deleteSurplus(@PathVariable Long id){
+        surplusService.deleteSurplus(id);
+    }
 }

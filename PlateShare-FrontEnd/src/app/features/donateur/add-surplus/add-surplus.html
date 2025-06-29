@@ -12,20 +12,23 @@
 
   <!-- Navigation Links -->
   <nav class="flex-1 px-3 py-5 space-y-1.5">
-    <a routerLink="/donor/dashboard" class="sidebar-link flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200">
+    <a href="#" class="sidebar-link flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200">
       <i class="fas fa-tachometer-alt w-5 h-5 mr-3"></i>
       Dashboard
     </a>
-    <a routerLink="/donor/add-surplus" class="sidebar-link active flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200">
+    <a routerLink="/add-surplus" class="sidebar-link active flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200">
       <i class="fas fa-plus-circle w-5 h-5 mr-3"></i>
       Add New Surplus
     </a>
-    <a routerLink="/donor/my-listings" class="sidebar-link flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200">
+    <a routerLink="/donateur/surplus-list" class="sidebar-link  flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200">
       <i class="fas fa-list-alt w-5 h-5 mr-3"></i>
       My Listings
     </a>
-
-    <a routerLink="/donor/edit-profile" class="sidebar-link flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200">
+    <a href="#" class="sidebar-link flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200">
+      <i class="fas fa-star w-5 h-5 mr-3"></i>
+      My Evaluations
+    </a>
+    <a href="#" class="sidebar-link flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200">
       <i class="fas fa-user-edit w-5 h-5 mr-3"></i>
       Edit Profile
     </a>
@@ -33,7 +36,7 @@
 
   <!-- Sidebar Footer -->
   <div class="p-4 border-t border-white/20 mt-auto">
-    <a (click)="logout()" class="flex items-center justify-center text-sm text-white/80 hover:text-white transition-colors cursor-pointer">
+    <a (click)="logout()" href="#" class="flex items-center justify-center text-sm text-white/80 hover:text-white transition-colors cursor-pointer">
       <i class="fas fa-sign-out-alt w-5 h-5 mr-2"></i>
       Logout
     </a>

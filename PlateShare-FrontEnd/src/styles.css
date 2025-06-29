@@ -59,3 +59,28 @@ body {
 
 /*-------------------------------------------------------*/
 
+.bg-plateshare-green { background-color: var(--ps-green); }
+.text-plateshare-green { color: var(--ps-green); }
+
+.sidebar-link:hover {
+  background-color: var(--ps-teal-green);
+  color: white;
+  transform: translateX(3px);
+}
+.sidebar-link.active {
+  background-color: var(--ps-green);
+  color: white;
+  font-weight: 600;
+}
+/* Status Badge Colors */
+.status-active { background-color: var(--ps-green); color: white; }
+.status-expired { background-color: #f59e0b;  color: white; } /* amber-500 */
+.status-reserved { background-color: var(--ps-blue); color: white; }
+
+.surplus-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.surplus-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}

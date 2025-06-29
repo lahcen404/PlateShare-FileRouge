@@ -2,14 +2,15 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {SurplusService} from '../../../core/services/surplus/surplus';
 import {AuthService} from '../../../core/services/auth/AuthService';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-surplus-update',
-  imports: [
-    FormsModule,
-    ReactiveFormsModule
-  ],
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        RouterLink
+    ],
   templateUrl: './surplus-update.html',
   styleUrl: './surplus-update.css'
 })

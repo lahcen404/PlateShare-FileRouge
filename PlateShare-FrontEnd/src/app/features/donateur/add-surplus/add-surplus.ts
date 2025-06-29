@@ -1,13 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../../core/services/auth/AuthService';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {SurplusService} from '../../../core/services/surplus/surplus';
 
 @Component({
   selector: 'app-add-surplus',
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterLink
   ],
   templateUrl: './add-surplus.html',
   styleUrl: './add-surplus.css'

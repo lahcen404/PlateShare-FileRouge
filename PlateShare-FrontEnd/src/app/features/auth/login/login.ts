@@ -45,11 +45,11 @@ onSubmit(): void{
       this.auth.saveAuth(res);
 
       if (this.auth.getRole()== "ADMIN"){
-        this.router.navigate(['/admin-dashboard']);
+        this.router.navigate(['/admin/dashboard']);
       }else if (this.auth.getRole()=="DEMANDEUR") {
-        this.router.navigate(['/demandeur-dashboard']);
+        this.router.navigate(['/demandeur/dashboard']);
       }else if(this.auth.getRole()=="DONATEUR"){
-        this.router.navigate(['/donateur-dashboard']);
+        this.router.navigate(['/donateur/dashboard']);
 
       }
 

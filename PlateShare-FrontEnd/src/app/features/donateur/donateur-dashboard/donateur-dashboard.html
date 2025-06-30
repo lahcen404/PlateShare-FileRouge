@@ -1,0 +1,257 @@
+<body class="flex min-h-screen">
+
+<!-- Sidebar for Donor -->
+<aside class="w-60 bg-gradient-to-b from-[#008AAD] to-[#0063AC] text-white flex-col shadow-lg fixed inset-y-0 left-0 z-30 hidden md:flex">
+  <!-- Logo/Brand -->
+  <div class="p-6 text-center border-b border-white/20">
+    <a routerLink="/donateur/dashboard" class="text-2xl font-extrabold tracking-tight">
+      Plate<span class="text-[#4CAF50]">Share</span>
+    </a>
+    <p class="text-xs text-white/70 mt-1">Donor Panel</p>
+  </div>
+
+  <!-- Navigation Links -->
+  <nav class="flex-1 px-3 py-5 space-y-1.5">
+    <a routerLink="/donateur/dashboard" class="sidebar-link active flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200">
+      <i class="fas fa-tachometer-alt w-5 h-5 mr-3"></i>
+      Dashboard
+    </a>
+    <a routerLink="/add-surplus" class="sidebar-link  flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200">
+      <i class="fas fa-plus-circle w-5 h-5 mr-3"></i>
+      Add New Surplus
+    </a>
+    <a routerLink="/donateur/surplus-list" class="sidebar-link  flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200">
+      <i class="fas fa-list-alt w-5 h-5 mr-3"></i>
+      My Listings
+    </a>
+    <a href="#" class="sidebar-link flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200">
+      <i class="fas fa-star w-5 h-5 mr-3"></i>
+      My Evaluations
+    </a>
+    <a href="#" class="sidebar-link flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200">
+      <i class="fas fa-user-edit w-5 h-5 mr-3"></i>
+      Edit Profile
+    </a>
+  </nav>
+
+  <!-- Sidebar Footer -->
+  <div class="p-4 border-t border-white/20 mt-auto">
+    <a (click)="logout()" href="#" class="flex items-center justify-center text-sm text-white/80 hover:text-white transition-colors cursor-pointer">
+      <i class="fas fa-sign-out-alt w-5 h-5 mr-2"></i>
+      Logout
+    </a>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<main class="flex-1 md:ml-60 flex flex-col">
+  <!-- Top Navbar for Donor -->
+  <nav class="bg-white shadow-sm sticky top-0 z-20">
+    <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Mobile Menu Button (visible on small screens) -->
+        <div class="md:hidden">
+          <button id="mobileMenuButton" class="text-gray-500 hover:text-plateshare-green focus:outline-none">
+            <i class="fas fa-bars fa-lg"></i>
+          </button>
+        </div>
+        <!-- Search (Optional - can be simplified or removed for donor) -->
+        <div class="hidden sm:flex flex-shrink-0">
+          <span class="text-xl font-semibold text-gray-700">My Dashboard</span>
+        </div>
+
+        <!-- Right side: Notifications and User -->
+        <div class="flex items-center space-x-4">
+          <button class="text-gray-500 navbar-icon-hover relative">
+            <i class="fas fa-bell fa-lg"></i>
+            <span class="absolute -top-1 -right-1 flex h-3 w-3">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-plateshare-green opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-3 w-3 bg-plateshare-green"></span>
+                            </span>
+          </button>
+          <div class="flex items-center cursor-pointer group">
+            <img class="h-9 w-9 rounded-full object-cover mr-2 border-2 border-transparent group-hover:border-plateshare-green transition-colors" src="https://placehold.co/100x100/00A674/FFFFFF?text=D" alt="Donor Avatar">
+            <div>
+              <span class="text-sm font-medium text-gray-700 hidden sm:block">GreenLeaf Cafe</span>
+              <span class="text-xs text-gray-500 hidden sm:block">Donor</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- Mobile Sidebar (hidden by default) -->
+  <div id="mobileMenu" class="md:hidden fixed inset-0 flex z-40 hidden">
+    <div class="fixed inset-0 bg-black opacity-50" id="mobileMenuBackdrop"></div>
+    <div class="relative flex-1 flex flex-col max-w-xs w-full bg-gradient-to-b from-[#008AAD] to-[#0063AC] text-white">
+      <div class="absolute top-0 right-0 -mr-12 pt-2">
+        <button id="closeMobileMenuButton" class="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+          <i class="fas fa-times text-white"></i>
+        </button>
+      </div>
+      <div class="p-5 text-center border-b border-white/20">
+        <a href="#" class="text-2xl font-extrabold tracking-tight">
+          Plate<span class="text-[#4CAF50]">Share</span>
+        </a>
+      </div>
+      <nav class="flex-1 px-3 py-5 space-y-1.5">
+        <a href="#" class="sidebar-link active flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200"><i class="fas fa-tachometer-alt w-5 h-5 mr-3"></i>Dashboard</a>
+        <a href="#" class="sidebar-link flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200"><i class="fas fa-plus-circle w-5 h-5 mr-3"></i>Add New Surplus</a>
+        <a href="#" class="sidebar-link flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200"><i class="fas fa-list-alt w-5 h-5 mr-3"></i>My Listings</a>
+        <a href="#" class="sidebar-link flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200"><i class="fas fa-star w-5 h-5 mr-3"></i>My Evaluations</a>
+        <a href="#" class="sidebar-link flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200"><i class="fas fa-user-edit w-5 h-5 mr-3"></i>Edit Profile</a>
+      </nav>
+      <div class="p-4 border-t border-white/20 mt-auto">
+        <a (click)="logout()" class="flex items-center justify-center text-sm text-white/80 hover:text-white transition-colors"><i class="fas fa-sign-out-alt w-5 h-5 mr-2"></i>Logout</a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Page Content Wrapper -->
+  <div class="flex-grow p-4 sm:p-6 md:p-8 bg-gray-50">
+    <!-- Welcome Header & Action Button -->
+    <header class="mb-6 flex flex-col sm:flex-row justify-between items-center">
+      <div>
+        <h1 class="text-2xl sm:text-3xl font-bold text-gray-800">
+          Welcome, GreenLeaf Cafe!
+        </h1>
+        <p class="text-gray-600 mt-1">Manage your surplus food contributions and see your impact.</p>
+      </div>
+      <a href="#" class="action-button mt-4 sm:mt-0 bg-plateshare-green hover:bg-opacity-90 text-white px-6 py-3 rounded-lg text-sm font-semibold flex items-center shadow-md hover:shadow-lg">
+        <i class="fas fa-plus-circle mr-2"></i> Add New Surplus
+      </a>
+    </header>
+
+    <!-- Quick Stats Cards for Donor -->
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
+      <div class="stat-card bg-white p-5 rounded-xl shadow-lg flex items-center space-x-4">
+        <div class="bg-plateshare-green/10 text-plateshare-green p-3.5 rounded-full">
+          <i class="fas fa-box-open fa-xl"></i>
+        </div>
+        <div>
+          <p class="text-sm font-medium text-gray-500 uppercase">Active Listings</p>
+          <p class="text-2xl font-bold text-gray-800">12</p>
+        </div>
+      </div>
+      <div class="stat-card bg-white p-5 rounded-xl shadow-lg flex items-center space-x-4">
+        <div class="bg-plateshare-blue/10 text-plateshare-blue p-3.5 rounded-full">
+          <i class="fas fa-handshake fa-xl"></i>
+        </div>
+        <div>
+          <p class="text-sm font-medium text-gray-500 uppercase">Pending Reservations</p>
+          <p class="text-2xl font-bold text-gray-800">3</p>
+        </div>
+      </div>
+      <div class="stat-card bg-white p-5 rounded-xl shadow-lg flex items-center space-x-4">
+        <div class="bg-plateshare-teal-green/10 text-plateshare-teal-green p-3.5 rounded-full">
+          <i class="fas fa-check-circle fa-xl"></i>
+        </div>
+        <div>
+          <p class="text-sm font-medium text-gray-500 uppercase">Total Items Donated</p>
+          <p class="text-2xl font-bold text-gray-800">256</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recent Listings & Evaluations Sections -->
+    <section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <!-- Recent Surplus Listings -->
+      <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-xl">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-xl font-semibold text-gray-700">Your Recent Listings</h2>
+        </div>
+        <div class="space-y-4">
+          <!-- Mock Listing Card 1 -->
+          <div class="listing-card border border-gray-200 p-4 rounded-lg flex justify-between items-center transition-all duration-200">
+            <div>
+              <h3 class="font-semibold text-gray-800">Fresh Croissants (Batch of 12)</h3>
+              <p class="text-xs text-gray-500">Status: <span class="text-green-600 font-medium">Active</span></p>
+            </div>
+            <div class="space-x-2">
+              <button class="text-blue-600 hover:text-blue-800 text-xs" title="Edit"><i class="fas fa-edit"></i></button>
+              <button class="text-red-600 hover:text-red-800 text-xs" title="Delete"><i class="fas fa-trash"></i></button>
+            </div>
+          </div>
+          <!-- Mock Listing Card 2 -->
+          <div class="listing-card border border-gray-200 p-4 rounded-lg flex justify-between items-center transition-all duration-200">
+            <div>
+              <h3 class="font-semibold text-gray-800">Vegetable Soup (3 Liters)</h3>
+              <p class="text-xs text-gray-500">Status: <span class="text-blue-600 font-medium">1 Reservation</span></p>
+            </div>
+            <div class="space-x-2">
+              <button class="text-blue-600 hover:text-blue-800 text-xs" title="Edit"><i class="fas fa-edit"></i></button>
+              <button class="text-red-600 hover:text-red-800 text-xs" title="Delete"><i class="fas fa-trash"></i></button>
+            </div>
+          </div>
+          <!-- Mock Listing Card 3 -->
+          <div class="listing-card border border-gray-200 p-4 rounded-lg flex justify-between items-center transition-all duration-200">
+            <div>
+              <h3 class="font-semibold text-gray-800">Assorted Pastries</h3>
+              <p class="text-xs text-gray-500">Status: <span class="text-red-600 font-medium">Expired</span></p>
+            </div>
+            <div class="space-x-2">
+              <button class="text-red-600 hover:text-red-800 text-xs" title="Delete"><i class="fas fa-trash"></i></button>
+            </div>
+          </div>
+          <!-- Add more listing cards here if you want to show all -->
+        </div>
+      </div>
+
+      <!-- Recent Evaluations -->
+      <div class="bg-white p-6 rounded-xl shadow-xl">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-xl font-semibold text-gray-700">Recent Evaluations</h2>
+        </div>
+        <div class="space-y-4">
+          <!-- Mock Evaluation 1 -->
+          <div class="evaluation-card bg-gray-50 p-4 rounded-lg">
+            <div class="flex items-center mb-1">
+              <span class="text-yellow-400"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></span>
+              <span class="ml-2 text-xs text-gray-500">by Community Kitchen</span>
+            </div>
+            <p class="text-sm text-gray-700 italic">"Amazing quality and very generous portions! Thank you!"</p>
+          </div>
+          <!-- Mock Evaluation 2 -->
+          <div class="evaluation-card bg-gray-50 p-4 rounded-lg">
+            <div class="flex items-center mb-1">
+              <span class="text-yellow-400"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+              <span class="ml-2 text-xs text-gray-500">by Local Shelter</span>
+            </div>
+            <p class="text-sm text-gray-700 italic">"Always reliable and the food is well-packaged. A lifesaver!"</p>
+          </div>
+          <!-- Add more evaluation cards here if you want to show all -->
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-white shadow-inner mt-auto">
+    <div class="max-w-full mx-auto py-3 px-4 sm:px-6 lg:px-8 text-center text-gray-500 text-xs">
+      &copy; <span id="currentYear"></span> PlateShare Donor Panel. All Rights Reserved.
+    </div>
+  </footer>
+</main>
+<script>
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+  // Mobile menu toggle
+  const mobileMenuButton = document.getElementById('mobileMenuButton');
+  const closeMobileMenuButton = document.getElementById('closeMobileMenuButton');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileMenuBackdrop = document.getElementById('mobileMenuBackdrop');
+
+  if (mobileMenuButton && mobileMenu && closeMobileMenuButton && mobileMenuBackdrop) {
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.remove('hidden');
+    });
+    closeMobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+    });
+    mobileMenuBackdrop.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+    });
+  }
+</script>
+</body>

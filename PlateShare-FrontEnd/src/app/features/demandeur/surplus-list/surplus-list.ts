@@ -5,7 +5,7 @@ import {SurplusService} from '../../../core/services/surplus/surplus';
 import {CommonModule, NgForOf} from '@angular/common';
 import {catchError, Observable, of, tap} from 'rxjs';
 import {AuthService} from '../../../core/services/auth/AuthService';
-import {Router} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-surplus-list',
@@ -15,7 +15,8 @@ import {Router} from '@angular/router';
 
     CommonModule,
     NgForOf,
-    SurplusCard
+    SurplusCard,
+    RouterLink
   ],
   templateUrl: './surplus-list.html',
   styleUrl: './surplus-list.css'

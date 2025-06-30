@@ -4,7 +4,7 @@
 <aside class="w-60 bg-gradient-to-b from-[#008AAD] to-[#0063AC] text-white flex-col shadow-lg fixed inset-y-0 left-0 z-30 hidden md:flex">
   <!-- Logo/Brand -->
   <div class="p-6 text-center border-b border-white/20">
-    <a href="donor_dashboard_page.html" class="text-2xl font-extrabold tracking-tight">
+    <a routerLink="/donateur/dashboard" class="text-2xl font-extrabold tracking-tight">
       Plate<span class="text-[#4CAF50]">Share</span>
     </a>
     <p class="text-xs text-white/70 mt-1">Donor Panel</p>
@@ -12,7 +12,7 @@
 
   <!-- Navigation Links -->
   <nav class="flex-1 px-3 py-5 space-y-1.5">
-    <a href="#" class="sidebar-link flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200">
+    <a routerLink="/donateur/dashboard" class="sidebar-link flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200">
       <i class="fas fa-tachometer-alt w-5 h-5 mr-3"></i>
       Dashboard
     </a>
@@ -85,14 +85,14 @@
         </button>
       </div>
       <div class="p-5 text-center border-b border-white/20">
-        <a href="donor_dashboard_page.html" class="text-2xl font-extrabold tracking-tight">
+        <a routerLink="/donateur/dashboard" class="text-2xl font-extrabold tracking-tight">
           Plate<span class="text-[#4CAF50]">Share</span>
         </a>
       </div>
       <nav class="flex-1 px-3 py-5 space-y-1.5">
-        <a href="donor_dashboard_page.html" class="sidebar-link flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200"><i class="fas fa-tachometer-alt w-5 h-5 mr-3"></i>Dashboard</a>
-        <a href="add_surplus_page.html" class="sidebar-link flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200"><i class="fas fa-plus-circle w-5 h-5 mr-3"></i>Add New Surplus</a>
-        <a href="my_listings_page.html" class="sidebar-link flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200"><i class="fas fa-list-alt w-5 h-5 mr-3"></i>My Listings</a>
+        <a routerLink="/donateur/dashboard" class="sidebar-link flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200"><i class="fas fa-tachometer-alt w-5 h-5 mr-3"></i>Dashboard</a>
+        <a routerLink="/add-surplus" class="sidebar-link flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200"><i class="fas fa-plus-circle w-5 h-5 mr-3"></i>Add New Surplus</a>
+        <a routerLink="/donateur/surplus-list" class="sidebar-link flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200"><i class="fas fa-list-alt w-5 h-5 mr-3"></i>My Listings</a>
         <a href="my_evaluations_donor_page.html" class="sidebar-link flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200"><i class="fas fa-star w-5 h-5 mr-3"></i>My Evaluations</a>
         <a href="edit_profile_donor_page.html" class="sidebar-link flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200"><i class="fas fa-user-edit w-5 h-5 mr-3"></i>Edit Profile</a>
       </nav>

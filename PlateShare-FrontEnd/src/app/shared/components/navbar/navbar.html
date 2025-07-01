@@ -2,11 +2,11 @@
 <!-- Header & Navbar -->
 <header class="bg-white shadow-md sticky top-0 z-50">
   <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-    <a href="#" class="text-2xl font-extrabold text-gray-800">
+    <a routerLink="/home"  class="text-2xl font-extrabold text-gray-800">
       Plate<span class="text-plateshare-green">Share</span>
     </a>
     <ul class="hidden md:flex items-center space-x-8">
-      <li><a href="#home" class="hover:text-plateshare-green transition-colors">Home</a></li>
+      <li><a routerLink="/home"  class="hover:text-plateshare-green transition-colors">Home</a></li>
       <li><a href="#how-it-works" class="hover:text-plateshare-green transition-colors">How It Works</a></li>
       <li><a href="#about" class="hover:text-plateshare-green transition-colors">About</a></li>
     </ul>
@@ -34,12 +34,12 @@
   </nav>
   <!-- Mobile Menu -->
   <div id="mobile-menu" class="hidden md:hidden bg-white p-5">
-    <a href="#home" class="block py-2 text-center hover:text-plateshare-green">Home</a>
+    <a routerLink="/home"  class="block py-2 text-center hover:text-plateshare-green">Home</a>
     <a href="#how-it-works" class="block py-2 text-center hover:text-plateshare-green">How It Works</a>
     <a href="#about" class="block py-2 text-center hover:text-plateshare-green">About</a>
     <div class="mt-4 flex flex-col space-y-3">
-      <a href="#" class="block text-center py-2 rounded-md hover:text-plateshare-green">Login</a>
-      <a href="#" class="block text-center py-2 text-white bg-plateshare-green rounded-md hover:bg-opacity-90">Sign Up</a>
+      <a routerLink="/login"  class="block text-center py-2 rounded-md hover:text-plateshare-green">Login</a>
+      <a routerLink="/register"  class="block text-center py-2 text-white bg-plateshare-green rounded-md hover:bg-opacity-90">Sign Up</a>
     </div>
   </div>
 </header>

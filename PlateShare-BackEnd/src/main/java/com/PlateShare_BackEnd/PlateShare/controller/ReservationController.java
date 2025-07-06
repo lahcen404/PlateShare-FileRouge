@@ -5,10 +5,11 @@ import com.PlateShare_BackEnd.PlateShare.dto.ReservationResponseDTO;
 import com.PlateShare_BackEnd.PlateShare.service.ReservationService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -27,4 +28,18 @@ public class ReservationController {
        ReservationResponseDTO createdReservation = reservationService.createReservation(reservationRequestDTO);
         return new ResponseEntity<>(createdReservation, HttpStatus.CREATED);
     }
+
+    @PreAuthorize("hasAuthority('DEMANDEUR')")
+    @GetMapping
+    List<ReservationResponseDTO> getMyReservations(){
+        return reservationService.getMyReservations();
+    }
+
+    @PreAuthorize("hasAuthority('DEMANDEUR')")
+    @PutMapping("/cancel/{id}")
+    ResponseEntity<Void> cancelReservation(@PathVariable Long id){
+        reservationService.cancelReservation(id);
+        return ResponseEntity.ok().build();
+    }
+
 }

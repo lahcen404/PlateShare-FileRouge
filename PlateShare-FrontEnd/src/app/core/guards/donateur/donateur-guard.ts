@@ -12,7 +12,7 @@ export const donateurGuard: CanActivateFn = (route, state) => {
     return true;
   } else {
     alert('Access denied: Donateur only');
-    router.navigate(['/']);
+    router.navigate(['/home']);
     return false;
   }
 };

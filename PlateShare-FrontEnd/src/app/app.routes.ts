@@ -22,7 +22,7 @@ export const routes: Routes = [
   {path: 'register', component: Register},
   {path: 'add-surplus', component: AddSurplus,canActivate:[donateurGuard]},
   {path: 'surplus-list', component: SurplusList},
-  {path: 'donateur/surplus-list', component: SurplusMylist},
+  {path: 'donateur/surplus-list', component: SurplusMylist,canActivate:[donateurGuard]},
   {path: 'surplus/update/:id', component: SurplusUpdate,canActivate:[donateurGuard]},
   {path: 'admin/dashboard', component :AdminDashboard , canActivate:[adminGuard]},
   {path: 'donateur/dashboard', component :DonateurDashboard, canActivate:[donateurGuard]},

@@ -12,7 +12,7 @@ export const adminGuard: CanActivateFn = (route, state) => {
     return true;
   } else {
     alert('Access denied: Admins only');
-    router.navigate(['/']);
+    router.navigate(['/home']);
     return false;
   }
 };

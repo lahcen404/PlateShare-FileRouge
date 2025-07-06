@@ -12,7 +12,7 @@ export const demandeurGuard: CanActivateFn = (route, state) => {
     return true;
   } else {
     alert('Access denied: Demandeurs only');
-    router.navigate(['/']);
+    router.navigate(['/home']);
     return false;
   }
 };

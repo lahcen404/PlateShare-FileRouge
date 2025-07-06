@@ -87,5 +87,16 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public void cancelReservation(Long ReservationId) {
 
+        // find reservation
+        Reservation reservation = reservationRepository.findById(ReservationId)
+                .orElseThrow(() -> new RuntimeException("Reservation not found"));
+
+        Surplus surplus = reservation.getSurplus();
+        surplus.setQuantite(surplus.getQuantite() + reservation.getQuantite());
+        surplusRepository.save(surplus);
+
+        reservation.setStatut(Statut.ANNULEE);
+        reservationRepository.save(reservation);
+
     }
 }

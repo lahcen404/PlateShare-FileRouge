@@ -34,4 +34,12 @@ public class ReservationController {
     List<ReservationResponseDTO> getMyReservations(){
         return reservationService.getMyReservations();
     }
+
+    @PreAuthorize("hasAuthority('DEMANDEUR')")
+    @PutMapping("/cancel/{id}")
+    ResponseEntity<Void> cancelReservation(@PathVariable Long id){
+        reservationService.cancelReservation(id);
+        return ResponseEntity.ok().build();
+    }
+
 }

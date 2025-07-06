@@ -1,4 +1,12 @@
 package com.PlateShare_BackEnd.PlateShare.service;
 
-public class ReservationService {
+import com.PlateShare_BackEnd.PlateShare.dto.ReservationRequestDTO;
+import com.PlateShare_BackEnd.PlateShare.dto.ReservationResponseDTO;
+
+import java.util.List;
+
+public interface ReservationService {
+    ReservationResponseDTO createReservation(ReservationRequestDTO reservationRequestDTO);
+    List<ReservationResponseDTO> getMyReservations();
+    void cancelReservation(Long ReservationId);
 }

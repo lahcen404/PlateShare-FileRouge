@@ -1,6 +1,7 @@
 package com.PlateShare_BackEnd.PlateShare.service.impl;
 
 import com.PlateShare_BackEnd.PlateShare.dto.SurplusDTO;
+import com.PlateShare_BackEnd.PlateShare.mapper.SurplusMapper;
 import com.PlateShare_BackEnd.PlateShare.model.Utilisateur;
 import com.PlateShare_BackEnd.PlateShare.model.Surplus;
 import com.PlateShare_BackEnd.PlateShare.repository.SurplusRepository;
@@ -18,11 +19,13 @@ public class SurplusServiceImpl implements SurplusService {
 
     private final SurplusRepository surplusRepository;
     private final UtilisateurRepository utilisateurRepository;
+    private final SurplusMapper surplusMapper;
 
     @Autowired
-    public SurplusServiceImpl(SurplusRepository surplusRepository, UtilisateurRepository utilisateurRepository) {
+    public SurplusServiceImpl(SurplusRepository surplusRepository, UtilisateurRepository utilisateurRepository, SurplusMapper surplusMapper) {
         this.surplusRepository = surplusRepository;
         this.utilisateurRepository = utilisateurRepository;
+        this.surplusMapper = surplusMapper;
     }
 
     @Override
@@ -38,7 +41,7 @@ public class SurplusServiceImpl implements SurplusService {
         surplus.setDateExpiration(surplusDTO.dateExpiration());
         surplus.setDonateur(donateur);
         Surplus savedSurplus = surplusRepository.save(surplus);
-        return toDto(savedSurplus);
+        return surplusMapper.toDto(savedSurplus);
     }
 
     @Override
@@ -53,7 +56,7 @@ public class SurplusServiceImpl implements SurplusService {
 
         Surplus updatedSurplus = surplusRepository.save(existingSurplus);
 
-        return toDto(updatedSurplus);
+        return surplusMapper.toDto(updatedSurplus);
     }
 
 
@@ -61,14 +64,14 @@ public class SurplusServiceImpl implements SurplusService {
     public SurplusDTO getSurplusById(Long id) {
         Surplus surplus = surplusRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Surplus not found with id: " + id));
-        return toDto(surplus);
+        return surplusMapper.toDto(surplus);
     }
 
     @Override
     public List<SurplusDTO> getAllSurplus() {
         return surplusRepository.findAll()
                 .stream()
-                .map(this::toDto)
+                .map(surplusMapper::toDto)
                 .collect(Collectors.toList());
     }
 
@@ -77,16 +80,6 @@ public class SurplusServiceImpl implements SurplusService {
         surplusRepository.deleteById(id);
     }
 
-    private SurplusDTO toDto(Surplus surplus) {
-        return new SurplusDTO(
-                surplus.getId(),
-                surplus.getDonateur().getNom(),
-                surplus.getDonateur().getNomRestaurant(),
-                surplus.getNom(),
-                surplus.getType(),
-                surplus.getQuantite(),
-                surplus.getDateExpiration()
-        );
-    }
+
 }
 

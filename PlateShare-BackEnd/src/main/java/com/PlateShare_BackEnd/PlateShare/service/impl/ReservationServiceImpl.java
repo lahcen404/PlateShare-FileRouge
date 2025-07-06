@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ReservationServiceImpl implements ReservationService {
@@ -70,7 +71,17 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public List<ReservationResponseDTO> getMyReservations() {
-        return List.of();
+
+        // find demandeur
+        String userEmail = SecurityContextHolder.getContext().getAuthentication().getName();
+        Utilisateur demandeur = utilisateurRepository.findByEmail(userEmail)
+                .orElseThrow(() -> new RuntimeException("Demandeur not found"));
+
+        List<Reservation> myReservations = reservationRepository.findByDemandeur(demandeur);
+
+        return myReservations.stream()
+                .map(reservationMapper::toDTO)
+                .collect(Collectors.toList());
     }
 
     @Override

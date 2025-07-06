@@ -43,6 +43,7 @@ public class AuthServiceImpl implements AuthService {
             utilisateur.setNomRestaurant(registerDTO.nomRestaurant());
             utilisateur.setAdresse(registerDTO.adresse());
         }
+
         var savedUser = utilisateurRepository.save(utilisateur);
 
         var jwtToken = jwtService.generateToken(savedUser);

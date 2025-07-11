@@ -38,4 +38,13 @@ onDelete(id:number){
   })
   }
   }
+
+  reserveItem(): void {
+    if (this.surplus && this.surplus.id) {
+      console.log(`Navigating to confirm reservation for surplus ID: ${this.surplus.id}`);
+      // We use the router to navigate to the confirmation page,
+      // passing the ID of the surplus item in the URL.
+      this.router.navigate(['/demandeur/confirm-reservation/', this.surplus.id]);
+    }
+  }
 }

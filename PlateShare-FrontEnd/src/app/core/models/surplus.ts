@@ -6,4 +6,6 @@ export interface Surplus{
   type:TypeFood;
   quantite:number;
   dateExpiration:string
+  donateurNom: string;
+  nomRestaurant: string;
 }

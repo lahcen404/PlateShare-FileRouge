@@ -14,6 +14,7 @@ import {adminGuard} from './core/guards/admin/admin-guard';
 import {donateurGuard} from './core/guards/donateur/donateur-guard';
 import {demandeurGuard} from './core/guards/demandeur/demandeur-guard';
 import {ReserveSurplus} from './features/demandeur/reserve-surplus/reserve-surplus';
+import {MyReservations} from './features/demandeur/my-reservations/my-reservations';
 
 export const routes: Routes = [
 
@@ -29,6 +30,7 @@ export const routes: Routes = [
   {path: 'donateur/dashboard', component :DonateurDashboard, canActivate:[donateurGuard]},
   {path: 'demandeur/dashboard', component :DemandeurDashboard, canActivate:[demandeurGuard]},
   {path: 'demandeur/confirm-reservation/:id' , component : ReserveSurplus, canActivate:[demandeurGuard]},
+  {path: 'demandeur/my-reservations' , component : MyReservations, canActivate:[demandeurGuard]},
 
 
 ];

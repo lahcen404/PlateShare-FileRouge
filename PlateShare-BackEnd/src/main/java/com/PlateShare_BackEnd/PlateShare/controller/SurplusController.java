@@ -39,7 +39,7 @@ public class SurplusController {
         return ResponseEntity.ok(updatedSurplus);
     }
 
-    @PreAuthorize("hasAuthority('DONATEUR')")
+   @PreAuthorize("hasAuthority('DONATEUR')")
     @GetMapping("/{id}")
     public SurplusDTO getSurplusById(@PathVariable Long id){
         return surplusService.getSurplusById(id);

@@ -66,7 +66,6 @@ PlateShare est une application **web full stack** qui vise à réduire le gaspil
 
 ### 🚀 Déploiement
 - **Conteneurs :** Docker
-- **CI/CD :** GitHub Actions / GitLab CI
 - **Serveur :**  Apache 
 
 

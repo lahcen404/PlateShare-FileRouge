@@ -8,10 +8,10 @@ import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 
-public record SurplusDTO(
+public record ResponseSurplusDTO(
 
         Long id,
-        String donateurNom,
+        String nomDonateur,
         String nomRestaurant,
 
         @NotBlank(message = "Nom d'article est requis")

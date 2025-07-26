@@ -1,15 +1,15 @@
 package com.PlateShare_BackEnd.PlateShare.service;
 
-import com.PlateShare_BackEnd.PlateShare.dto.SurplusDTO;
-import com.PlateShare_BackEnd.PlateShare.model.Surplus;
+import com.PlateShare_BackEnd.PlateShare.dto.RequestSurplus;
+import com.PlateShare_BackEnd.PlateShare.dto.ResponseSurplusDTO;
 
 import java.util.List;
 
 public interface SurplusService {
-    SurplusDTO createSurplus(SurplusDTO surplusDTO);
-    SurplusDTO updateSurplus(Long id, SurplusDTO surplusDTO);
-    SurplusDTO getSurplusById(Long id);
-    List<SurplusDTO> getAllSurplus();
+    ResponseSurplusDTO createSurplus(RequestSurplus surplusDTO);
+    ResponseSurplusDTO updateSurplus(Long id, ResponseSurplusDTO surplusDTO);
+    ResponseSurplusDTO getSurplusById(Long id);
+    List<ResponseSurplusDTO> getAllSurplus();
     void deleteSurplus(Long id);
 
 

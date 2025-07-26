@@ -11,6 +11,7 @@ import {SurplusService} from '../../../core/services/surplus/surplus';
     RouterLink
   ],
   templateUrl: './add-surplus.html',
+  standalone: true,
   styleUrl: './add-surplus.css'
 })
 export class AddSurplus implements OnInit{

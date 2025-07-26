@@ -1,20 +1,20 @@
 package com.PlateShare_BackEnd.PlateShare.mapper;
 
-import com.PlateShare_BackEnd.PlateShare.dto.SurplusDTO;
+import com.PlateShare_BackEnd.PlateShare.dto.RequestSurplus;
+import com.PlateShare_BackEnd.PlateShare.dto.ResponseSurplusDTO;
 import com.PlateShare_BackEnd.PlateShare.model.Surplus;
-import org.springframework.stereotype.Component;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
-@Component
-public class SurplusMapper {
-    public  SurplusDTO toDto(Surplus surplus) {
-        return new SurplusDTO(
-                surplus.getId(),
-                surplus.getDonateur().getNom(),
-                surplus.getDonateur().getNomRestaurant(),
-                surplus.getNom(),
-                surplus.getType(),
-                surplus.getQuantite(),
-                surplus.getDateExpiration()
-        );
-    }
+@Mapper (componentModel = "spring")
+public interface SurplusMapper {
+
+
+
+    @Mapping(source = "donateur.nom" , target = "nomDonateur")
+    @Mapping(source = "donateur.nomRestaurant" , target = "nomRestaurant")
+    ResponseSurplusDTO toDto(Surplus surplus);
+
+       Surplus toEntity(RequestSurplus requestSurplus);
+
 }

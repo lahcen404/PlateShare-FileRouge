@@ -1,7 +1,7 @@
 package com.PlateShare_BackEnd.PlateShare.controller;
 
-import com.PlateShare_BackEnd.PlateShare.dto.SurplusDTO;
-import com.PlateShare_BackEnd.PlateShare.model.Surplus;
+import com.PlateShare_BackEnd.PlateShare.dto.RequestSurplus;
+import com.PlateShare_BackEnd.PlateShare.dto.ResponseSurplusDTO;
 import com.PlateShare_BackEnd.PlateShare.service.SurplusService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,28 +27,28 @@ public class SurplusController {
     // create surplus
     @PreAuthorize("hasAuthority('DONATEUR')")
     @PostMapping("/create")
-    public ResponseEntity<SurplusDTO> createSurplus(@Valid @RequestBody SurplusDTO surplusDTO){
-        SurplusDTO createdSurplus = surplusService.createSurplus(surplusDTO);
+    public ResponseEntity<ResponseSurplusDTO> createSurplus(@Valid @RequestBody RequestSurplus surplusDTO){
+        ResponseSurplusDTO createdSurplus = surplusService.createSurplus(surplusDTO);
         return new ResponseEntity<>(createdSurplus, HttpStatus.CREATED) ;
     }
 
     @PreAuthorize("hasAuthority('DONATEUR')")
     @PutMapping("/update/{id}")
-    public ResponseEntity<SurplusDTO> updateSurplus(@PathVariable Long id, @Valid @RequestBody SurplusDTO surplusDTO) {
-        SurplusDTO updatedSurplus = surplusService.updateSurplus(id, surplusDTO);
+    public ResponseEntity<ResponseSurplusDTO> updateSurplus(@PathVariable Long id, @Valid @RequestBody ResponseSurplusDTO surplusDTO) {
+        ResponseSurplusDTO updatedSurplus = surplusService.updateSurplus(id, surplusDTO);
         return ResponseEntity.ok(updatedSurplus);
     }
 
 
     @PreAuthorize("hasAnyAuthority('DONATEUR','DEMANDEUR')")
     @GetMapping("/{id}")
-    public SurplusDTO getSurplusById(@PathVariable Long id){
+    public ResponseSurplusDTO getSurplusById(@PathVariable Long id){
         return surplusService.getSurplusById(id);
     }
 
     //get all surplus
     @GetMapping
-    public List<SurplusDTO> getAllSurplus(){
+    public List<ResponseSurplusDTO> getAllSurplus(){
         return  surplusService.getAllSurplus();
     }
 

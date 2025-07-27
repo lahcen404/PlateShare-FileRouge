@@ -3,22 +3,19 @@ package com.PlateShare_BackEnd.PlateShare.mapper;
 import com.PlateShare_BackEnd.PlateShare.dto.ReservationRequestDTO;
 import com.PlateShare_BackEnd.PlateShare.dto.ReservationResponseDTO;
 import com.PlateShare_BackEnd.PlateShare.model.Reservation;
-import org.springframework.stereotype.Component;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 
-@Component
-public class ReservationMapper {
+@Mapper(componentModel = "spring")
+public interface ReservationMapper {
 
-    public ReservationResponseDTO toDTO(Reservation reservation){
-        return new ReservationResponseDTO(
-            reservation.getId(),
-            reservation.getDateReservation(),
-            reservation.getQuantite(),
-            reservation.getStatut(),
-            reservation.getSurplus().getNom(),
-            reservation.getSurplus().getDonateur().getNom(),
-            reservation.getSurplus().getDonateur().getNomRestaurant(),
-            reservation.getDemandeur().getNom()
-        );
-    }
+    @Mapping(source = "surplus.nom",target = "nomSurplus")
+    @Mapping(source = "surplus.donateur.nom", target = "nomDonateur")
+    @Mapping(source = "surplus.donateur.nomRestaurant", target = "nomRestaurant")
+    @Mapping(source = "demandeur.nom", target = "nomDemandeur")
+
+    ReservationResponseDTO toDto (Reservation reservation);
+    Reservation toEntity(ReservationRequestDTO reservationRequestDTO);
+
 }

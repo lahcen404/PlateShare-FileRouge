@@ -33,10 +33,11 @@
     </div>
 
     <!-- Reserve Button -->
-    <button (click)="reserveItem()" class="mt-auto w-full bg-plateshare-green hover:bg-opacity-90 text-white px-4 py-2 rounded-md text-sm font-medium shadow-md transition">
+    <div *ngIf="authService.getRole()==='DEMANDEUR'">
+    <button (click)="reserveSurplus()" class="mt-auto w-full bg-plateshare-green hover:bg-opacity-90 text-white px-4 py-2 rounded-md text-sm font-medium shadow-md transition">
       <i class="fas fa-shopping-basket mr-2"></i>Reserve Now
     </button>
-
+  </div>
     <!-- Edit/Delete buttons for Donateur -->
     <div *ngIf="authService.getRole() === 'DONATEUR'" class="mt-3 flex flex-col sm:flex-row gap-2">
       <button

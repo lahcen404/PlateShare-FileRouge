@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {catchError, Observable, of, tap} from "rxjs";
 import {Surplus} from "../../../core/models/surplus";
 import {SurplusService} from "../../../core/services/surplus/surplus";
@@ -22,6 +22,7 @@ import {AuthService} from "../../../core/services/auth/AuthService";
 export class SurplusMylist implements OnInit{
   surplus$!: Observable<Surplus[]>;
   error: string | null = null;
+
 
   constructor(private surplusService: SurplusService,
               private authService: AuthService,

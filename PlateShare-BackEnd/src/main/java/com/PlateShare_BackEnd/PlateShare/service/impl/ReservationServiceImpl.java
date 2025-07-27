@@ -57,8 +57,7 @@ public class ReservationServiceImpl implements ReservationService {
         surplus.setQuantite(surplus.getQuantite() - reservationRequestDTO.quantite());
         surplusRepository.save(surplus);
 
-        Reservation reservation = new Reservation();
-        reservation.setQuantite(reservationRequestDTO.quantite());
+        Reservation reservation = reservationMapper.toEntity(reservationRequestDTO);
         reservation.setDateReservation(LocalDate.now());
         reservation.setStatut(Statut.EN_ATTENTE_DE_COLLECTE);
         reservation.setDemandeur(demandeur);
@@ -66,7 +65,7 @@ public class ReservationServiceImpl implements ReservationService {
 
         Reservation savedReservation = reservationRepository.save(reservation);
 
-        return reservationMapper.toDTO(savedReservation);
+        return reservationMapper.toDto(savedReservation);
     }
 
     @Override
@@ -80,7 +79,7 @@ public class ReservationServiceImpl implements ReservationService {
         List<Reservation> myReservations = reservationRepository.findByDemandeur(demandeur);
 
         return myReservations.stream()
-                .map(reservationMapper::toDTO)
+                .map(reservationMapper::toDto)
                 .collect(Collectors.toList());
     }
 

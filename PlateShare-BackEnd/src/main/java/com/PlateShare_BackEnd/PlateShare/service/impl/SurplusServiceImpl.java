@@ -36,13 +36,9 @@ SurplusServiceImpl implements SurplusService {
                 .orElseThrow(() -> new RuntimeException("Donor not found with email: " + userEmail));
 
         Surplus surplus = surplusMapper.toEntity(surplusDTO); // new Surplus();
-//        surplus.setNom(surplusDTO.nom());
-//        surplus.setType(surplusDTO.type());
-//        surplus.setQuantite(surplusDTO.quantite());
-//        surplus.setDateExpiration(surplusDTO.dateExpiration());
+
         surplus.setDonateur(donateur);
         Surplus savedSurplus = surplusRepository.save(surplus);
-    //  RequestSurplus requestSurplus=  surplusMapper.toDtoS(savedSurplus);
 
       return surplusMapper.toDto(savedSurplus);
     }

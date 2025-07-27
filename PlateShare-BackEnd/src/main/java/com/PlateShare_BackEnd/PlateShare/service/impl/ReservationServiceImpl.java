@@ -84,6 +84,14 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
+    public ReservationResponseDTO getReservationById(Long id) {
+        Reservation reservation = reservationRepository.findById(id).
+                orElseThrow(()-> new RuntimeException("reservation not found"));
+        return reservationMapper.toDto(reservation) ;
+    }
+
+
+    @Override
     public void cancelReservation(Long ReservationId) {
 
         // find reservation

@@ -36,6 +36,12 @@ public class ReservationController {
     }
 
     @PreAuthorize("hasAuthority('DEMANDEUR')")
+    @GetMapping("/{id}")
+    ReservationResponseDTO getReservationById(@PathVariable Long id){
+        return reservationService.getReservationById(id);
+    }
+
+    @PreAuthorize("hasAuthority('DEMANDEUR')")
     @PutMapping("/cancel/{id}")
     ResponseEntity<Void> cancelReservation(@PathVariable Long id){
         reservationService.cancelReservation(id);

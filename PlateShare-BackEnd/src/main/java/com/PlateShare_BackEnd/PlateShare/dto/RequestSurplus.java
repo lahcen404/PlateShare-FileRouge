@@ -26,4 +26,10 @@ public record RequestSurplus (
     @NotNull(message = "Date d'expiration est requise")
     @Future(message = "Date d'expiration doit être dans le futur")
     LocalDate dateExpiration
-){}
+
+
+){
+    public RequestSurplus(String nom, TypeFood type, Integer quantite, LocalDate dateExpiration) {
+        this(0L, nom, type, quantite, dateExpiration);
+    }
+}

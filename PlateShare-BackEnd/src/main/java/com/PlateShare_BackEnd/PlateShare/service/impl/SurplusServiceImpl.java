@@ -8,6 +8,7 @@ import com.PlateShare_BackEnd.PlateShare.model.Surplus;
 import com.PlateShare_BackEnd.PlateShare.repository.SurplusRepository;
 import com.PlateShare_BackEnd.PlateShare.repository.UtilisateurRepository;
 import com.PlateShare_BackEnd.PlateShare.service.SurplusService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -67,6 +68,7 @@ SurplusServiceImpl implements SurplusService {
     }
 
     @Override
+    @Transactional
     public List<ResponseSurplusDTO> getAllSurplus() {
         return surplusRepository.findAll()
                 .stream()

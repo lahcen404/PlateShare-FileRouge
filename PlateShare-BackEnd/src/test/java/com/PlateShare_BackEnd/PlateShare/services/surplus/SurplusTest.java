@@ -16,6 +16,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.test.context.TestPropertySource;
 
 import java.time.LocalDate;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static com.PlateShare_BackEnd.PlateShare.enums.TypeFood.FRUITS;
 
@@ -67,5 +69,24 @@ public class SurplusTest {
         assertEquals(100, savedSurplus.quantite());
         assertEquals("Lahcen", savedSurplus.nomDonateur());
         assertEquals("Restaurant Lahcen", savedSurplus.nomRestaurant());
+    }
+
+    @Test
+    void getAllSurplus(){
+
+        RequestSurplus requestSurplus = new RequestSurplus(
+                "Apples",
+                FRUITS,
+                100,
+                LocalDate.of(2025, 8, 10)
+        );
+
+       surplusService.createSurplus(requestSurplus);
+
+
+        List<ResponseSurplusDTO> allSurplus = surplusService.getAllSurplus();
+
+        assertNotNull(allSurplus);
+        assertEquals(1,allSurplus.size());
     }
 }

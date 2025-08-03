@@ -5,6 +5,7 @@ import com.PlateShare_BackEnd.PlateShare.dto.RequestSurplus;
 import com.PlateShare_BackEnd.PlateShare.dto.ResponseSurplusDTO;
 import com.PlateShare_BackEnd.PlateShare.enums.Role;
 import com.PlateShare_BackEnd.PlateShare.model.Utilisateur;
+import com.PlateShare_BackEnd.PlateShare.repository.SurplusRepository;
 import com.PlateShare_BackEnd.PlateShare.repository.UtilisateurRepository;
 import com.PlateShare_BackEnd.PlateShare.service.SurplusService;
 import org.junit.jupiter.api.BeforeEach;
@@ -29,6 +30,8 @@ public class SurplusTest {
 
     @Autowired
     private UtilisateurRepository utilisateurRepository;
+    @Autowired
+    private SurplusRepository surplusRepository;
 
     private Utilisateur donateur;
 
@@ -88,5 +91,24 @@ public class SurplusTest {
 
         assertNotNull(allSurplus);
         assertEquals(1,allSurplus.size());
+    }
+
+    @Test
+    void deleteSurlus(){
+        RequestSurplus requestSurplus = new RequestSurplus(
+                "Apples",
+                FRUITS,
+                100,
+                LocalDate.of(2025, 8, 10)
+        );
+
+       ResponseSurplusDTO savedSurplus = surplusService.createSurplus(requestSurplus);
+
+       Long surplusId = savedSurplus.id();
+
+       surplusService.deleteSurplus(surplusId);
+
+       assertFalse(surplusRepository.existsById(surplusId));
+
     }
 }

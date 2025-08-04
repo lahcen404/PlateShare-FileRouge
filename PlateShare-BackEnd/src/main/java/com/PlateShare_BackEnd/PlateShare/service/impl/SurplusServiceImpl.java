@@ -44,8 +44,9 @@ SurplusServiceImpl implements SurplusService {
       return surplusMapper.toDto(savedSurplus);
     }
 
+    @Transactional
     @Override
-    public ResponseSurplusDTO updateSurplus(Long id, ResponseSurplusDTO surplusDTO) {
+    public ResponseSurplusDTO updateSurplus(Long id, RequestSurplus surplusDTO) {
         Surplus existingSurplus = surplusRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("suurplus not found with id: " + id));
 

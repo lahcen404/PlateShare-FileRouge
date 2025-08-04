@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface SurplusService {
     ResponseSurplusDTO createSurplus(RequestSurplus surplusDTO);
-    ResponseSurplusDTO updateSurplus(Long id, ResponseSurplusDTO surplusDTO);
+    ResponseSurplusDTO updateSurplus(Long id, RequestSurplus surplusDTO);
     ResponseSurplusDTO getSurplusById(Long id);
     List<ResponseSurplusDTO> getAllSurplus();
     void deleteSurplus(Long id);

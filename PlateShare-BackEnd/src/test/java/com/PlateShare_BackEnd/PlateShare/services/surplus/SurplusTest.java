@@ -19,6 +19,7 @@ import org.springframework.test.context.TestPropertySource;
 import java.time.LocalDate;
 import java.util.List;
 
+import static com.PlateShare_BackEnd.PlateShare.enums.TypeFood.VIANDE;
 import static org.junit.jupiter.api.Assertions.*;
 import static com.PlateShare_BackEnd.PlateShare.enums.TypeFood.FRUITS;
 
@@ -110,5 +111,27 @@ public class SurplusTest {
 
        assertFalse(surplusRepository.existsById(surplusId));
 
+    }
+
+    @Test
+    void updateSurplus(){
+        RequestSurplus requestSurplus = new RequestSurplus(
+                "Apples",
+                FRUITS,
+                100,
+                LocalDate.of(2025, 8, 10)
+        );
+
+        ResponseSurplusDTO savedSurplus = surplusService.createSurplus(requestSurplus);
+
+        Long surplusId = savedSurplus.id();
+
+        RequestSurplus surplusUpdate= new RequestSurplus(surplusId,"Red Meat",VIANDE,120,LocalDate.of(2025, 8, 14));
+        ResponseSurplusDTO  updatedSurplus = surplusService.updateSurplus(surplusId,surplusUpdate);
+
+        assertNotNull(updatedSurplus);
+        assertEquals("Red Meat",updatedSurplus.nom());
+        assertEquals(VIANDE,updatedSurplus.type());
+        assertEquals(120,updatedSurplus.quantite());
     }
 }

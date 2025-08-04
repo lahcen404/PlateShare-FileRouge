@@ -70,7 +70,7 @@ export class SurplusUpdate implements OnInit{
     const formData= this.surplusForm.value;
 this.surplusService.updateSurplus(this.surplusId, formData).subscribe(() => {
   console.log('Surplus updated successfully!');
-    this.router.navigate(['/surplus-list']);
+    this.router.navigate(['/donateur/surplus-list']);
 })
 
   }

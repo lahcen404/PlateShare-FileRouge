@@ -51,7 +51,7 @@ const formData= this.surplusForm.value;
 
 this.surplusService.addSurplus(formData).subscribe(()=> {
   console.log("Surplus added !!!");
-  this.router.navigate(['/home']);
+  this.router.navigate(['/donateur/surplus-list']);
 })
   }
 

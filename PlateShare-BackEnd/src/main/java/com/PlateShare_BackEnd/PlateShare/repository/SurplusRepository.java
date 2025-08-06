@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SurplusRepository extends JpaRepository<Surplus,Long> {
+    long countByDonateurId(Long id);
 }

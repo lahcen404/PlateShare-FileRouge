@@ -59,7 +59,7 @@ public class ReservationServiceImpl implements ReservationService {
 
         Reservation reservation = reservationMapper.toEntity(reservationRequestDTO);
         reservation.setDateReservation(LocalDate.now());
-        reservation.setStatut(Statut.TERMINEE);
+        reservation.setStatut(Statut.EN_ATTENTE_DE_COLLECTE);
         reservation.setDemandeur(demandeur);
         reservation.setSurplus(surplus);
 

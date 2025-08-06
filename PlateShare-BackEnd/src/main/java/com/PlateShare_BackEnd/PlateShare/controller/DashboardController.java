@@ -22,4 +22,10 @@ public class DashboardController {
     public ResponseEntity<DashboardStatsDTO> getDonateurStats(){
         return ResponseEntity.ok(dashboardService.getDonateurDashboard());
     }
+
+    @GetMapping("/demandeur")
+    @PreAuthorize("hasAuthority('DEMANDEUR')")
+    public ResponseEntity<DashboardStatsDTO> getDemandeurStats(){
+        return ResponseEntity.ok(dashboardService.getDemandeurDashbaord());
+    }
 }

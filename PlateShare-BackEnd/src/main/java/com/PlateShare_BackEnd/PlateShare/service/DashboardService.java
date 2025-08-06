@@ -32,6 +32,17 @@ public class DashboardService {
         return new DashboardStatsDTO(activeListings,pendingReservations,totalDoneted,null,null,null,null,null,null);
     }
 
+    // demandeur
+    public DashboardStatsDTO getDemandeurDashbaord(){
+
+        Utilisateur user = getUser();
+        long activeReservations  = reservationRepository.countByDemandeurId(user.getId());
+        long completedReservations = reservationRepository.countBySurplusDonateurIdAndStatut(user.getId(), Statut.TERMINEE);
+        long totalAvailableSurplus = reservationRepository.count();
+
+        return new DashboardStatsDTO(null,null,null,activeReservations,completedReservations,totalAvailableSurplus,null,null,null);
+    }
+
 
     private Utilisateur getUser(){
         String userEmail = SecurityContextHolder.getContext().getAuthentication().getName();

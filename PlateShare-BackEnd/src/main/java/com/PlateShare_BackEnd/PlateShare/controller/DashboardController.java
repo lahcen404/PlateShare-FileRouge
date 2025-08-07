@@ -18,14 +18,20 @@ public class DashboardController {
     private final DashboardService dashboardService;
 
     @GetMapping("/donateur")
-    @PreAuthorize("hasAuthority('DONATEUR')")
+    @PreAuthorize("hasAnyAuthority('DONATEUR','ADMIN')")
     public ResponseEntity<DashboardStatsDTO> getDonateurStats(){
         return ResponseEntity.ok(dashboardService.getDonateurDashboard());
     }
 
     @GetMapping("/demandeur")
-    @PreAuthorize("hasAuthority('DEMANDEUR')")
+    @PreAuthorize("hasAnyAuthority('DEMANDEUR','ADMIN')")
     public ResponseEntity<DashboardStatsDTO> getDemandeurStats(){
         return ResponseEntity.ok(dashboardService.getDemandeurDashbaord());
+    }
+
+    @GetMapping("/admin")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public ResponseEntity<DashboardStatsDTO> getAdminDashboard(){
+        return ResponseEntity.ok(dashboardService.getAdminDashboard());
     }
 }

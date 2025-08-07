@@ -15,6 +15,7 @@ public record DashboardStatsDTO(
         // Admin
         Long totalDonateurs,
         Long totalDemandeurs,
-        Long totalReservations
+        Long totalReservations,
+        Long totalSurplus
 ) {
 }

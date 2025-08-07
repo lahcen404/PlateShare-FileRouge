@@ -1,6 +1,7 @@
 package com.PlateShare_BackEnd.PlateShare.service;
 
 import com.PlateShare_BackEnd.PlateShare.dto.DashboardStatsDTO;
+import com.PlateShare_BackEnd.PlateShare.enums.Role;
 import com.PlateShare_BackEnd.PlateShare.enums.Statut;
 import com.PlateShare_BackEnd.PlateShare.model.Utilisateur;
 import com.PlateShare_BackEnd.PlateShare.repository.ReservationRepository;
@@ -29,7 +30,7 @@ public class DashboardService {
         long pendingReservations = reservationRepository.countBySurplusDonateurIdAndStatut(user.getId(), Statut.EN_ATTENTE_DE_COLLECTE);
         long totalDoneted = reservationRepository.countBySurplusDonateurIdAndStatut(user.getId(), Statut.TERMINEE);
 
-        return new DashboardStatsDTO(activeListings,pendingReservations,totalDoneted,null,null,null,null,null,null);
+        return new DashboardStatsDTO(activeListings,pendingReservations,totalDoneted,null,null,null,null,null,null,null);
     }
 
     // demandeur
@@ -40,7 +41,22 @@ public class DashboardService {
         long completedReservations = reservationRepository.countBySurplusDonateurIdAndStatut(user.getId(), Statut.TERMINEE);
         long totalAvailableSurplus = reservationRepository.count();
 
-        return new DashboardStatsDTO(null,null,null,activeReservations,completedReservations,totalAvailableSurplus,null,null,null);
+        return new DashboardStatsDTO(null,null,null,activeReservations,completedReservations,totalAvailableSurplus,null,null,null,null);
+    }
+
+
+    // admin
+    public DashboardStatsDTO getAdminDashboard(){
+
+        Utilisateur user = getUser();
+
+        long totalDonateurs = utilisateurRepository.countByRole(Role.DONATEUR);
+        long totalDemandeurs = utilisateurRepository.countByRole(Role.DEMANDEUR);
+        long totalReservations = reservationRepository.count();
+        long totalSurplus = surplusRepository.count();
+
+
+        return new DashboardStatsDTO(null,null,null,null,null,null,totalDonateurs,totalDemandeurs,totalReservations,totalSurplus);
     }
 
 

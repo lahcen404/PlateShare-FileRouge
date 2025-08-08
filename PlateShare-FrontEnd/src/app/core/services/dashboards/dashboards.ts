@@ -6,7 +6,7 @@ import {DashboardStats} from "../../models/DashboardStats";
 @Injectable({
   providedIn: 'root'
 })
-export class Dashboards {
+export class DashboardsService {
 
   apiUrl = "http://localhost:8080/api/dashboard"
 

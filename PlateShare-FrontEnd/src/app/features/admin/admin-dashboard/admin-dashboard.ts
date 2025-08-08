@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit, Output} from '@angular/core';
 import {Router, RouterLink} from '@angular/router';
 import {AuthService} from '../../../core/services/auth/AuthService';
 import {DashboardStats} from '../../../core/models/DashboardStats';
@@ -14,8 +14,7 @@ import {DashboardsService} from '../../../core/services/dashboards/dashboards';
 })
 export class AdminDashboard implements OnInit{
 
-  stats:DashboardStats | null=null;
-  isLoading:boolean = true;
+  @Output() stats:DashboardStats | null=null;
   error:String | null=null;
 
   constructor(private authService: AuthService,
@@ -32,20 +31,17 @@ export class AdminDashboard implements OnInit{
   }
 
   getAdminStats():void{
-    this.isLoading=true;
     this.error=null;
 
     this.dashboardService.getAdminStats().subscribe({
       next:(data)=>{
         this.stats = data;
-        this.isLoading=false;
 
         this.cdr.detectChanges();
       },
       error:(err)=>{
         console.log("failed loading data" , err);
         this.error="can't loading data ";
-        this.isLoading=false;
         this.cdr.detectChanges();
       }
     })

@@ -3,7 +3,7 @@ export interface DashboardStats{
   // Donateur
     myActiveListings?: number;
     MyPendingReservation?: number;
-    myTotalItemsDelivered?: number;
+  myTotalItemsDonated?: number;
 
   // Demandeur
     myActiveReservations?: number;

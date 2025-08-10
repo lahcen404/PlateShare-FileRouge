@@ -62,7 +62,6 @@ export class SurplusList implements OnInit{
 
   onFilterChange(event: Event): void {
     const filterValue = (event.target as HTMLSelectElement).value;
-    console.log("filter select now is :", filterValue);
     if (filterValue === 'ALL') {
       this.filtredSurplus = this.surplus;
     } else {

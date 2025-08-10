@@ -107,33 +107,17 @@
     </header>
 
     <!-- Filters -->
-    <section class="mb-8 p-4 sm:p-6 bg-white rounded-xl shadow-lg">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
-        <div>
-          <label for="searchKeyword" class="block text-sm font-medium text-gray-700">Search by Keyword</label>
-          <input type="text" id="searchKeyword" name="searchKeyword" placeholder="e.g., bread, apples, soup" class="mt-1 block w-full form-input border-gray-300 rounded-md shadow-sm py-2 px-3">
-        </div>
-        <div>
-          <label for="foodTypeFilter" class="block text-sm font-medium text-gray-700">Food Type</label>
-          <select id="foodTypeFilter" name="foodTypeFilter" class="mt-1 block w-full form-select border-gray-300 rounded-md shadow-sm py-2 px-3">
-            <option value="all">All Types</option>
-            <option value="baked_goods">Baked Goods</option>
-            <option value="produce">Produce</option>
-            <option value="dairy">Dairy</option>
-            <option value="prepared_meals">Prepared Meals</option>
-            <option value="canned_goods">Canned Goods</option>
-            <option value="beverages">Beverages</option>
-          </select>
-        </div>
-        <div>
-          <label for="expirationFilter" class="block text-sm font-medium text-gray-700">Expires By</label>
-          <input type="date" id="expirationFilter" name="expirationFilter" class="mt-1 block w-full form-input border-gray-300 rounded-md shadow-sm py-2 px-3">
-        </div>
-        <button class="w-full sm:w-auto bg-plateshare-green hover:bg-opacity-90 text-white px-5 py-2.5 rounded-lg text-sm font-semibold flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-200 action-button">
-          <i class="fas fa-filter mr-2"></i> Apply Filters
-        </button>
-      </div>
-    </section>
+    <div class="flex items-center space-x-2">
+      <label for="typeFilter" class="text-sm font-medium text-gray-700">Filtrer par type :</label>
+      <select id="typeFilter" (change)="onFilterChange($event)" value="ALL" class="form-select border-gray-300 rounded-md shadow-sm py-2 px-3">
+        <option value="ALL" selected>Tous les Types</option>
+        <option [value]="TypeFoodEnum.FRUITS">Fruits</option>
+        <option [value]="TypeFoodEnum.LEGUMES">Légumes</option>
+        <option [value]="TypeFoodEnum.VIANDE">Viande</option>
+        <option [value]="TypeFoodEnum.PRODUITS_LAITIERS">Produits Laitiers</option>
+        <option [value]="TypeFoodEnum.BOULANGERIE">Boulangerie</option>
+      </select>
+    </div>
 
     <!-- Listings -->
     <section>
@@ -143,10 +127,10 @@
         <strong>Error:</strong> {{ error }}
       </div>
 
-      <div *ngIf="surplus$ | async as surplusItems; else loading" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <app-surplus-card *ngFor="let item of surplusItems" [surplus]="item"></app-surplus-card>
+      <div  class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <app-surplus-card *ngFor="let item of filtredSurplus" [surplus]="item"></app-surplus-card>
 
-        <div *ngIf="surplusItems.length === 0 && !error" class="col-span-full text-center py-10">
+        <div *ngIf="filtredSurplus.length === 0 && !error" class="col-span-full text-center py-10">
           <p class="text-gray-500">No surplus items are available at the moment. Please check back later!</p>
         </div>
       </div>

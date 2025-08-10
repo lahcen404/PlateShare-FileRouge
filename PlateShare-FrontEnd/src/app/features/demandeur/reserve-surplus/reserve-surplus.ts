@@ -104,7 +104,7 @@ error: String | null=null ;
     this.reservationSurplus.createReservation(reservationRequest).subscribe({
       next: (response) => {
         console.log("Reservation created done !", response);
-        this.router.navigate(['/demandeur/dashboard']);
+        this.router.navigate(['/demandeur/my-reservations']);
       },
       error: (err) => {
         console.error("error creation ", err);

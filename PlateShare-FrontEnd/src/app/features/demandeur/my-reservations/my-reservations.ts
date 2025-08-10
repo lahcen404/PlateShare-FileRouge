@@ -6,6 +6,8 @@ import {Reservation} from '../../../core/models/reservation';
 import {ReservationSurplus} from '../../../core/services/reservation/reservation';
 import {MyReservationsCard} from '../my-reservations-card/my-reservations-card';
 import {CommonModule, NgForOf} from '@angular/common';
+import {Statut} from '../../../core/models/Statut';
+import {TypeFood} from '../../../core/models/typeFood';
 
 @Component({
   selector: 'app-my-reservations',
@@ -20,10 +22,14 @@ import {CommonModule, NgForOf} from '@angular/common';
 })
 export class MyReservations implements OnInit{
 
-  reservations$! : Observable<Reservation[]>;
-  error: string | null = null;
+  reservations : Reservation[]=[];
+  filtredReservations:Reservation[]=[];
 
-constructor(private authService: AuthService,
+  error: string | null = null;
+  public statut = Statut;
+
+
+  constructor(private authService: AuthService,
             private router: Router,
             private reservationService: ReservationSurplus){}
   logout() {
@@ -37,13 +43,30 @@ constructor(private authService: AuthService,
 
   private loadMyReservations(): void {
     this.error = null;
-    this.reservations$ = this.reservationService.getMyReservations().pipe(
-      tap(data => console.log("myy reservations data:", data)),
-      catchError(err => {
-        console.error("Failed to load reservations:", err);
-        this.error = "can't load your reservations";
-        return of([]); // empty array on error
-      })
-    );
+    this.reservationService.getMyReservations().subscribe({
+      next:(data)=> {
+        this.reservations=data;
+        console.log("data !:",data);
+      },
+      error:(err)=>{
+        console.log("error in loading data !!!");
+        console.error(err);
+      }
+      });
+  }
+
+  onFilterChange(event: Event): void{
+    const filterValue = (event.target as HTMLSelectElement).value;
+    console.log("filter select now is :", filterValue);
+
+    if(filterValue === 'ALL'){
+      this.filtredReservations = this.reservations;
+    }else{
+
+      this.filtredReservations = this.reservations.filter(
+        reservation => reservation.statut === filterValue
+      );
+    }
+
   }
 }

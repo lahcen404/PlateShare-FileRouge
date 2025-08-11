@@ -65,11 +65,6 @@ onSubmit(): void{
   });
 
 }
-  get emailError(): string {
-    const emailCtrl = this.loginForm.get('email');
-    if (emailCtrl?.hasError('required')) return 'Email is required';
-    if (emailCtrl?.hasError('email')) return 'Invalid email address';
-    return '';
-  }
+
 
 }

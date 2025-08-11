@@ -38,7 +38,7 @@ export class MyReservations implements OnInit{
   }
 
   ngOnInit(): void {
-    this.loadMyReservations()
+    this.loadMyReservations();
   }
 
   private loadMyReservations(): void {

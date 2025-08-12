@@ -64,9 +64,14 @@ PlateShare est une application **web full stack** qui vise à réduire le gaspil
 - **Base de données :** MySQL
 - **ORM :** JPA (Hibernate)
 
+### 🔍 Qualité & CI/CD
+- **Analyse de code :** SonarQube (bugs, vulnérabilités, couverture de tests)
+- **Intégration Continue & Déploiement :** Jenkins (build, tests, analyse, packaging, déploiement automatisé)
+
 ### 🚀 Déploiement
 - **Conteneurs :** Docker
 - **Serveur :**  Apache 
+
 
 
 ---

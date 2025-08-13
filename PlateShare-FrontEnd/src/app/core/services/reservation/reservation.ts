@@ -20,4 +20,8 @@ export class ReservationSurplus {
     return this.httpClient.get<Reservation[]>(this.apiUrl);
   }
 
+  annulerReservation(id: number):Observable<void>{
+    return this.httpClient.put<void>(`${this.apiUrl}/cancel/${id}`,null)
+  }
+
 }

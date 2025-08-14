@@ -72,8 +72,6 @@ PlateShare est une application **web full stack** qui vise à réduire le gaspil
 - **Conteneurs :** Docker
 - **Serveur :**  Apache 
 
-
-
 ---
 
 ## UMl Diagrams

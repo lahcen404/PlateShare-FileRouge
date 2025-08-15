@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Reservation} from '../../../core/models/reservation';
 import {ReservationSurplus} from '../../../core/services/reservation/reservation';
 import {NgIf} from '@angular/common';
@@ -14,13 +14,16 @@ import {NgIf} from '@angular/common';
 export class MyReservationsCard {
   constructor(private reservationService:ReservationSurplus){}
 
-@Input() reservation! : Reservation;
+  @Input() reservation! : Reservation;
+  @Output() canceled=new EventEmitter<number>;
+
 
 cancelReservation(id: number){
   if (confirm("Are you sure want to cancel this reservations?")){
     this.reservationService.annulerReservation(id).subscribe(()=>{
       alert('reservation canceled!!');
       console.log("canceled succes !!!");
+      this.canceled.emit(id);
     })
   }
 }

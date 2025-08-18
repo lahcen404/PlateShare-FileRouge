@@ -15,6 +15,8 @@ import {donateurGuard} from './core/guards/donateur/donateur-guard';
 import {demandeurGuard} from './core/guards/demandeur/demandeur-guard';
 import {ReserveSurplus} from './features/demandeur/reserve-surplus/reserve-surplus';
 import {MyReservations} from './features/demandeur/my-reservations/my-reservations';
+import {ManageUsers} from './features/admin/manage-users/manage-users';
+import {SurplusListAdmin} from './features/admin/surplus-list-admin/surplus-list-admin';
 
 export const routes: Routes = [
 
@@ -24,9 +26,11 @@ export const routes: Routes = [
   {path: 'register', component: Register},
   {path: 'add-surplus', component: AddSurplus,canActivate:[donateurGuard]},
   {path: 'surplus-list', component: SurplusList},
+  {path: 'admin/surplus-list', component: SurplusListAdmin},
   {path: 'donateur/surplus-list', component: SurplusMylist,canActivate:[donateurGuard]},
   {path: 'surplus/update/:id', component: SurplusUpdate,canActivate:[donateurGuard]},
   {path: 'admin/dashboard', component :AdminDashboard , canActivate:[adminGuard]},
+  {path: 'admin/users', component :ManageUsers , canActivate:[adminGuard]},
   {path: 'donateur/dashboard', component :DonateurDashboard, canActivate:[donateurGuard]},
   {path: 'demandeur/dashboard', component :DemandeurDashboard, canActivate:[demandeurGuard]},
   {path: 'demandeur/confirm-reservation/:id' , component : ReserveSurplus, canActivate:[demandeurGuard]},

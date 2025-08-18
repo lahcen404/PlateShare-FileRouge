@@ -1,1 +1,192 @@
-<p>manage-users works!</p>
+<body class="flex min-h-screen">
+
+<aside class="w-64 bg-gradient-to-b from-[#0078B5] to-[#0063AC] text-white flex flex-col shadow-lg fixed inset-y-0 left-0 z-30">
+  <!-- Logo/Brand -->
+  <div class="p-6 text-center border-b border-white/20">
+    <a href="#" class="text-2xl font-extrabold tracking-tight">
+      Plate<span class="text-[#4CAF50]">Share</span>
+    </a>
+    <p class="text-xs text-white/70 mt-1">Admin Panel</p>
+  </div>
+
+  <!-- Navigation Links -->
+  <nav class="flex-1 px-4 py-6 space-y-2">
+    <a routerLink="/admin/dashboard" class="sidebar-link  flex items-center px-4 py-3 rounded-lg transition-all duration-200">
+      <i class="fas fa-tachometer-alt w-6 h-6 mr-3"></i>
+      Dashboard
+    </a>
+    <a routerLink="/admin/users" class="sidebar-link active flex items-center px-4 py-3 rounded-lg transition-all duration-200">
+      <i class="fas fa-users-cog w-6 h-6 mr-3"></i>
+      Account Management
+    </a>
+    <a routerLink="/admin/surplus-list" class="sidebar-link  flex items-center px-4 py-3 rounded-lg transition-all duration-200">
+      <i class="fas fa-box-open w-6 h-6 mr-3"></i>
+      Surplus Listings
+    </a>
+  </nav>
+
+  <!-- Sidebar Footer -->
+  <div class="p-4 border-t border-white/20 mt-auto">
+    <a href="#" class="flex items-center justify-center text-sm text-white/80 hover:text-white transition-colors">
+      <i class="fas fa-sign-out-alt w-5 h-5 mr-2"></i>
+      Logout
+    </a>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<main class="flex-1 ml-64 flex flex-col">
+  <!-- Top Navbar (Same as Admin Dashboard) -->
+  <nav class="bg-white shadow-md sticky top-0 z-20">
+    <div class="max-w-full mx-auto px-6 md:px-10">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex-shrink-0">
+          <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-3 flex items-center">
+                                <i class="fas fa-search text-gray-400"></i>
+                            </span>
+            <input class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-plateshare-green focus:border-plateshare-green sm:text-sm" placeholder="Search users..." type="search" name="user-search">
+          </div>
+        </div>
+        <div class="flex items-center space-x-5">
+          <button class="text-gray-500 navbar-icon-hover relative">
+            <i class="fas fa-bell fa-lg"></i>
+            <span class="absolute -top-1 -right-1 flex h-3 w-3">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                            </span>
+          </button>
+          <button class="text-gray-500 navbar-icon-hover">
+            <i class="fas fa-envelope fa-lg"></i>
+          </button>
+          <div class="flex items-center">
+            <img class="h-8 w-8 rounded-full object-cover mr-2" src="https://placehold.co/100x100/0078B5/FFFFFF?text=A" alt="User Avatar">
+            <span class="text-sm font-medium text-gray-700 hidden sm:block">Admin User</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content Wrapper -->
+  <div class="flex-grow p-6 md:p-10 bg-gray-50">
+    <!-- Header -->
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold text-gray-800">Account Management</h1>
+      <p class="text-gray-500 mt-1">Manage donor and requester accounts.</p>
+    </header>
+
+    <!-- Filters and Actions -->
+    <div class="mb-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div class="flex space-x-2">
+        <button class="filter-button active px-4 py-2 border rounded-lg text-sm font-medium transition-colors duration-150">All Users</button>
+        <button class="filter-button px-4 py-2 border rounded-lg text-sm font-medium transition-colors duration-150">Donors</button>
+        <button class="filter-button px-4 py-2 border rounded-lg text-sm font-medium transition-colors duration-150">Requesters</button>
+      </div>
+      <button class="bg-plateshare-green hover:bg-opacity-90 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center shadow-sm hover:shadow-md transition-shadow">
+        <i class="fas fa-plus mr-2"></i> Add New User
+      </button>
+    </div>
+
+    <!-- Users Table -->
+    <div class="bg-white shadow-xl rounded-lg overflow-x-auto">
+      <table class="w-full min-w-max whitespace-nowrap">
+        <thead class="bg-gray-100">
+        <tr>
+          <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">User ID</th>
+          <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Name</th>
+          <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Email</th>
+          <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Role</th>
+          <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Status</th>
+          <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Joined Date</th>
+          <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Actions</th>
+        </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200">
+        <!-- Mock User Row 1 -->
+        <tr>
+          <td class="px-6 py-4 text-sm text-gray-700">USR001</td>
+          <td class="px-6 py-4 text-sm font-medium text-gray-900">Lahcen AIT MASKOUR</td>
+          <td class="px-6 py-4 text-sm text-gray-700">lahcen.maskourgmail.com</td>
+          <td class="px-6 py-4 text-sm text-gray-700">Donor</td>
+          <td class="px-6 py-4">
+            <span class="status-active px-3 py-1 text-xs font-semibold rounded-full">Active</span>
+          </td>
+          <td class="px-6 py-4 text-sm text-gray-700">2024-01-15</td>
+          <td class="px-6 py-4 text-sm space-x-2">
+            <button class="table-action-button text-blue-600 hover:text-blue-800" title="View Details"><i class="fas fa-eye"></i></button>
+            <button class="table-action-button text-yellow-500 hover:text-yellow-700" title="Edit User"><i class="fas fa-edit"></i></button>
+            <button class="table-action-button text-red-600 hover:text-red-800" title="Block User"><i class="fas fa-user-lock"></i></button>
+            <button class="table-action-button text-gray-500 hover:text-gray-700" title="Delete User"><i class="fas fa-trash-alt"></i></button>
+          </td>
+        </tr>
+        <!-- Mock User Row 2 -->
+        <tr>
+          <td class="px-6 py-4 text-sm text-gray-700">USR002</td>
+          <td class="px-6 py-4 text-sm font-medium text-gray-900">lahcen</td>
+          <td class="px-6 py-4 text-sm text-gray-700">lahcen.maskourgmail.com</td>
+          <td class="px-6 py-4 text-sm text-gray-700">Requester</td>
+          <td class="px-6 py-4">
+            <span class="status-active px-3 py-1 text-xs font-semibold rounded-full">Active</span>
+          </td>
+          <td class="px-6 py-4 text-sm text-gray-700">2024-02-20</td>
+          <td class="px-6 py-4 text-sm space-x-2">
+            <button class="table-action-button text-blue-600 hover:text-blue-800" title="View Details"><i class="fas fa-eye"></i></button>
+            <button class="table-action-button text-yellow-500 hover:text-yellow-700" title="Edit User"><i class="fas fa-edit"></i></button>
+            <button class="table-action-button text-red-600 hover:text-red-800" title="Block User"><i class="fas fa-user-lock"></i></button>
+            <button class="table-action-button text-gray-500 hover:text-gray-700" title="Delete User"><i class="fas fa-trash-alt"></i></button>
+          </td>
+        </tr>
+        <!-- Mock User Row 3 (Blocked) -->
+        <tr>
+          <td class="px-6 py-4 text-sm text-gray-700">USR003</td>
+          <td class="px-6 py-4 text-sm font-medium text-gray-900">Maskour Lahcen</td>
+          <td class="px-6 py-4 text-sm text-gray-700">lahcen.maskourmail.com</td>
+          <td class="px-6 py-4 text-sm text-gray-700">Donor</td>
+          <td class="px-6 py-4">
+            <span class="status-blocked px-3 py-1 text-xs font-semibold rounded-full">Blocked</span>
+          </td>
+          <td class="px-6 py-4 text-sm text-gray-700">2024-03-10</td>
+          <td class="px-6 py-4 text-sm space-x-2">
+            <button class="table-action-button text-blue-600 hover:text-blue-800" title="View Details"><i class="fas fa-eye"></i></button>
+            <button class="table-action-button text-yellow-500 hover:text-yellow-700" title="Edit User"><i class="fas fa-edit"></i></button>
+            <button class="table-action-button text-green-600 hover:text-green-800" title="Unblock User"><i class="fas fa-user-check"></i></button>
+            <button class="table-action-button text-gray-500 hover:text-gray-700" title="Delete User"><i class="fas fa-trash-alt"></i></button>
+          </td>
+        </tr>
+        <!-- Add more mock user rows as needed -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination -->
+    <div class="mt-6 flex justify-center">
+      <nav class="inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+        <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+          <span class="sr-only">Previous</span>
+          <i class="fas fa-chevron-left h-5 w-5"></i>
+        </a>
+        <a href="#" aria-current="page" class="relative z-10 inline-flex items-center px-4 py-2 border border-plateshare-green bg-plateshare-green/10 text-sm font-medium text-plateshare-green">1</a>
+        <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">2</a>
+        <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">3</a>
+        <span class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700">...</span>
+        <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+          <span class="sr-only">Next</span>
+          <i class="fas fa-chevron-right h-5 w-5"></i>
+        </a>
+      </nav>
+    </div>
+
+  </div>
+
+  <!-- Footer (Same as Admin Dashboard) -->
+  <footer class="bg-white shadow-inner mt-auto">
+    <div class="max-w-full mx-auto py-4 px-6 md:px-10 text-center text-gray-500 text-sm">
+      &copy; <span id="currentYear"></span> PlateShare Admin Panel. All Rights Reserved.
+    </div>
+  </footer>
+</main>
+<script>
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>
+</body>

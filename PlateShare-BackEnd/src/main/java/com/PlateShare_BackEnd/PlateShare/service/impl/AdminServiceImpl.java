@@ -19,6 +19,7 @@ public class AdminServiceImpl implements AdminService {
     public AdminServiceImpl(UtilisateurRepository utilisateurRepository, UserMapper userMapper) {
         this.utilisateurRepository = utilisateurRepository;
         this.userMapper = userMapper;
+
     }
 
 
@@ -28,6 +29,15 @@ public class AdminServiceImpl implements AdminService {
                 .stream()
                 .map(userMapper::toDTO)
                 .collect(Collectors.toList());
+    }
+
+
+    @Transactional
+    public void deleteUser(Long userId) {
+        if (!utilisateurRepository.existsById(userId)) {
+            throw new RuntimeException("User not found with ");
+        }
+        utilisateurRepository.deleteById(userId);
     }
 
 

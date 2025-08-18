@@ -1,0 +1,146 @@
+<body class="flex min-h-screen">
+
+<aside class="w-64 bg-gradient-to-b from-[#0078B5] to-[#0063AC] text-white flex flex-col shadow-lg fixed inset-y-0 left-0 z-30">
+  <!-- Logo/Brand -->
+  <div class="p-6 text-center border-b border-white/20">
+    <a href="#" class="text-2xl font-extrabold tracking-tight">
+      Plate<span class="text-[#4CAF50]">Share</span>
+    </a>
+    <p class="text-xs text-white/70 mt-1">Admin Panel</p>
+  </div>
+
+  <!-- Navigation Links -->
+  <nav class="flex-1 px-4 py-6 space-y-2">
+    <a routerLink="/admin/dashboard" class="sidebar-link  flex items-center px-4 py-3 rounded-lg transition-all duration-200">
+      <i class="fas fa-tachometer-alt w-6 h-6 mr-3"></i>
+      Dashboard
+    </a>
+    <a routerLink="/admin/users" class="sidebar-link flex items-center px-4 py-3 rounded-lg transition-all duration-200">
+      <i class="fas fa-users-cog w-6 h-6 mr-3"></i>
+      Account Management
+    </a>
+    <a routerLink="/admin/surplus-list" class="sidebar-link active  flex items-center px-4 py-3 rounded-lg transition-all duration-200">
+      <i class="fas fa-box-open w-6 h-6 mr-3"></i>
+      Surplus Listings
+    </a>
+  </nav>
+
+  <!-- Sidebar Footer -->
+  <div class="p-4 border-t border-white/20 mt-auto">
+    <a href="#" class="flex items-center justify-center text-sm text-white/80 hover:text-white transition-colors">
+      <i class="fas fa-sign-out-alt w-5 h-5 mr-2"></i>
+      Logout
+    </a>
+  </div>
+</aside>
+
+
+<!-- Main Content -->
+<main class="flex-1 md:ml-60 flex flex-col">
+
+  <!-- Top Navbar for Requester -->
+  <nav class="bg-white shadow-sm sticky top-0 z-20">
+    <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="md:hidden">
+          <button id="mobileMenuButton" class="text-gray-500 hover:text-plateshare-green focus:outline-none">
+            <i class="fas fa-bars fa-lg"></i>
+          </button>
+        </div>
+        <div class="hidden sm:flex flex-shrink-0">
+          <span class="text-xl font-semibold text-gray-700">Browse Surplus Food</span>
+        </div>
+
+        <div class="flex items-center space-x-4">
+          <button class="text-gray-500 navbar-icon-hover relative">
+            <i class="fas fa-bell fa-lg"></i>
+            <span class="absolute -top-1 -right-1 flex h-3 w-3">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-plateshare-green opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-3 w-3 bg-plateshare-green"></span>
+            </span>
+          </button>
+          <div class="flex items-center cursor-pointer group">
+            <img class="h-9 w-9 rounded-full object-cover mr-2 border-2 border-transparent group-hover:border-plateshare-green transition-colors" src="https://placehold.co/100x100/00A674/FFFFFF?text=R" alt="Requester Avatar">
+            <div>
+              <span class="text-sm font-medium text-gray-700 hidden sm:block">AIT MASKOUR Lahcen</span>
+              <span class="text-xs text-gray-500 hidden sm:block">Requester</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Sidebar -->
+  <div id="mobileMenu" class="md:hidden fixed inset-0 flex z-40 hidden">
+    <div class="fixed inset-0 bg-black opacity-50" id="mobileMenuBackdrop"></div>
+    <div class="relative flex-1 flex flex-col max-w-xs w-full bg-gradient-to-b from-[#008AAD] to-[#0063AC] text-white">
+      <div class="absolute top-0 right-0 -mr-12 pt-2">
+        <button id="closeMobileMenuButton" class="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+          <i class="fas fa-times text-white"></i>
+        </button>
+      </div>
+      <div class="p-5 text-center border-b border-white/20">
+        <a href="requester_dashboard_page.html" class="text-2xl font-extrabold tracking-tight">
+          Plate<span class="text-[#4CAF50]">Share</span>
+        </a>
+      </div>
+      <nav class="flex-1 px-3 py-5 space-y-1.5">
+        <a href="requester_dashboard_page.html" class="sidebar-link flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200"><i class="fas fa-tachometer-alt w-5 h-5 mr-3"></i>Dashboard</a>
+        <a href="#" class="sidebar-link active flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200"><i class="fas fa-search w-5 h-5 mr-3"></i>Browse Surplus</a>
+        <a href="#" class="sidebar-link flex items-center px-4 py-2.5 rounded-md text-sm transition-all duration-200"><i class="fas fa-history w-5 h-5 mr-3"></i>My Reservations</a>
+      </nav>
+      <div class="p-4 border-t border-white/20 mt-auto">
+        <a href="#" class="flex items-center justify-center text-sm text-white/80 hover:text-white transition-colors"><i class="fas fa-sign-out-alt w-5 h-5 mr-2"></i>Logout</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page Content -->
+  <div class="flex-grow p-4 sm:p-6 md:p-8 bg-gray-50">
+
+    <!-- Header -->
+    <header class="mb-6">
+      <h1 class="text-2xl sm:text-3xl font-bold text-gray-800">Find Available Surplus</h1>
+      <p class="text-gray-600 mt-1">Search and filter listings to find food near you.</p>
+    </header>
+
+    <!-- Filters -->
+
+
+    <!-- Listings -->
+    <section>
+      <h2 class="text-xl font-semibold text-gray-700 mb-4">Available Listings</h2>
+
+      <div *ngIf="error" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-md">
+        <strong>Error:</strong> {{ error }}
+      </div>
+
+      <div  class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <app-surplus-card *ngFor="let item of surplus" [surplus]="item"></app-surplus-card>
+
+        <div *ngIf="surplus.length === 0 && !error" class="col-span-full text-center py-10">
+          <p class="text-gray-500">No surplus items are available at the moment. Please check back later!</p>
+        </div>
+      </div>
+
+      <ng-template #loading>
+        <div *ngIf="!error" class="text-center py-10">
+          <p class="text-gray-500">Loading surplus items...</p>
+        </div>
+      </ng-template>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-white shadow-inner mt-auto">
+    <div class="max-w-full mx-auto py-3 px-4 sm:px-6 lg:px-8 text-center text-gray-500 text-xs">
+      &copy; <span id="currentYear"></span> PlateShare Requester Panel. All Rights Reserved.
+    </div>
+  </footer>
+</main>
+
+<!-- JS -->
+<script src="../../../../assets/script.js">
+</script>
+</body>

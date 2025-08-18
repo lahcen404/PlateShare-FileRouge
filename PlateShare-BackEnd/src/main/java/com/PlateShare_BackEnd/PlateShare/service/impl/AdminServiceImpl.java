@@ -1,0 +1,34 @@
+package com.PlateShare_BackEnd.PlateShare.service.impl;
+
+import com.PlateShare_BackEnd.PlateShare.dto.AdminUserViewDTO;
+import com.PlateShare_BackEnd.PlateShare.mapper.UserMapper;
+import com.PlateShare_BackEnd.PlateShare.repository.UtilisateurRepository;
+import com.PlateShare_BackEnd.PlateShare.service.AdminService;
+import jakarta.transaction.Transactional;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Service
+public class AdminServiceImpl implements AdminService {
+    private final UtilisateurRepository utilisateurRepository;
+    private final UserMapper userMapper;
+
+
+    public AdminServiceImpl(UtilisateurRepository utilisateurRepository, UserMapper userMapper) {
+        this.utilisateurRepository = utilisateurRepository;
+        this.userMapper = userMapper;
+    }
+
+
+    @Transactional
+    public List<AdminUserViewDTO> getAllUsers() {
+        return utilisateurRepository.findAll()
+                .stream()
+                .map(userMapper::toDTO)
+                .collect(Collectors.toList());
+    }
+
+
+}

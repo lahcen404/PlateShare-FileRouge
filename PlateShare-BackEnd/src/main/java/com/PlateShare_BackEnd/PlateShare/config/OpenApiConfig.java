@@ -10,14 +10,14 @@ import io.swagger.v3.oas.annotations.servers.Server;
 
 @OpenAPIDefinition(
         info = @Info(
-                title = "DeliveryMatch API",
-                description = "API documentation for the Delivery Match application",
+                title = "PlateShare API",
+                description = "API documentation for the PlateShare application",
                 version = "1.0"
         ),
         servers = {
                 @Server(
                         description = "Local Development Server",
-                        url = "http://localhost:8080"
+                        url = "http://localhost:8084"
                 )
         },
         // This part applies the security scheme globally to all endpoints

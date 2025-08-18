@@ -8,7 +8,7 @@ import {Surplus} from '../../models/surplus';
 })
 export class SurplusService {
 
-  apiUrl="http://localhost:8080/api/surplus"
+  apiUrl="http://localhost:8084/api/surplus"
   constructor(private http:HttpClient) { }
 
   addSurplus(surplus:Surplus): Observable<Surplus>{

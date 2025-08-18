@@ -9,7 +9,7 @@ import {ReservationRequest} from '../../models/ReservationRequest';
 })
 export class ReservationSurplus {
 
-  apiUrl = "http://localhost:8080/api/reservations"
+  apiUrl = "http://localhost:8084/api/reservations"
   constructor(private httpClient: HttpClient) { }
 
   createReservation(reservation:ReservationRequest) : Observable<Reservation>{

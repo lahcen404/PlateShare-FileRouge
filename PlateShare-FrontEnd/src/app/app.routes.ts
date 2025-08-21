@@ -17,13 +17,14 @@ import {ReserveSurplus} from './features/demandeur/reserve-surplus/reserve-surpl
 import {MyReservations} from './features/demandeur/my-reservations/my-reservations';
 import {ManageUsers} from './features/admin/manage-users/manage-users';
 import {SurplusListAdmin} from './features/admin/surplus-list-admin/surplus-list-admin';
+import {authGuard} from './core/guards/auth/auth-guard';
 
 export const routes: Routes = [
 
   {path:'', component: Home},
   {path: 'home', component: Home },
-  {path: 'login' , component : Login},
-  {path: 'register', component: Register},
+  {path: 'login' , component : Login , canActivate: [authGuard]},
+  {path: 'register', component: Register, canActivate: [authGuard]},
   {path: 'add-surplus', component: AddSurplus,canActivate:[donateurGuard]},
   {path: 'surplus-list', component: SurplusList},
   {path: 'admin/surplus-list', component: SurplusListAdmin},

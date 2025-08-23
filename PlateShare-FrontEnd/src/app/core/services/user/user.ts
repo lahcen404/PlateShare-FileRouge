@@ -16,6 +16,10 @@ export class UserService {
     return this.http.get<Utilisateur[]>(`${this.apiUrl}/users`);
  }
 
+deleteUser(id : number):Observable<void>{
+    return this.http.delete<void>(`${this.apiUrl}/delete/users/${id}`)
 
+
+}
 
 }

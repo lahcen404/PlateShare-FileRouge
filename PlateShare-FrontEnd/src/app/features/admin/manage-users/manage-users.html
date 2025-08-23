@@ -120,7 +120,7 @@
             <button class="table-action-button text-blue-600 hover:text-blue-800" title="View Details"><i class="fas fa-eye"></i></button>
             <button class="table-action-button text-yellow-500 hover:text-yellow-700" title="Edit User"><i class="fas fa-edit"></i></button>
             <button class="table-action-button text-red-600 hover:text-red-800" title="Block User"><i class="fas fa-user-lock"></i></button>
-            <button class="table-action-button text-gray-500 hover:text-gray-700" title="Delete User"><i class="fas fa-trash-alt"></i></button>
+            <button (click)="onDelete(user.id!)" class="table-action-button text-gray-500 hover:text-gray-700" title="Delete User"><i class="fas fa-trash-alt"></i></button>
           </td>
         </tr>
         </tbody>

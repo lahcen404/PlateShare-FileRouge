@@ -1,5 +1,5 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {Route, Router, RouterLink} from '@angular/router';
+import {ChangeDetectorRef, Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Router, RouterLink} from '@angular/router';
 import {Utilisateur} from '../../../core/models/utilisateur';
 import {UserService} from '../../../core/services/user/user';
 import {CommonModule, NgForOf} from '@angular/common';
@@ -17,8 +17,9 @@ import {AuthService} from '../../../core/services/auth/AuthService';
 })
 export class ManageUsers implements OnInit{
 
+  @Output() deleted =new EventEmitter<number>();
+
   users:Utilisateur[]=[];
-  user?: Utilisateur;
   isLoading: boolean = true;
   error:string | null=null;
 
@@ -31,6 +32,15 @@ export class ManageUsers implements OnInit{
 
   ngOnInit(): void {
     this.loadUsers();
+  }
+
+  onDelete(id: number){
+    if (confirm('Are you sure you want to delete this user?')) {
+      this.userService.deleteUser(id).subscribe(() => {
+      alert("User deleteed !!");
+      this.deleted.emit(id);
+      })
+    }
   }
 
   private loadUsers():void{

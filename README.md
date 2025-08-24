@@ -1,5 +1,4 @@
 
-
 # 🍽️ PlateShare - Gestion de Surplus Alimentaire
 
 PlateShare est une application **web full stack** qui vise à réduire le gaspillage alimentaire en connectant les donateurs (restaurants, supermarchés, particuliers) avec les demandeurs (associations, individus dans le besoin). Cette plateforme propose une solution simple, sécurisée et efficace pour partager les surplus alimentaires.

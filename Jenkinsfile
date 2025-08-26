@@ -25,8 +25,8 @@ pipeline {
                 // Change directory into the backend folder
                 dir('PlateShare-BackEnd') {
                     echo 'Building the Spring Boot backend...'
-                    // Run the Maven package command to build the .jar file
-                    sh 'mvn clean package -DskipTests'
+                    // Use 'bat' for Windows instead of 'sh'
+                    bat 'mvn clean package -DskipTests'
                 }
             }
         }
@@ -37,11 +37,8 @@ pipeline {
                 // Change directory into the frontend folder
                 dir('PlateShare-FrontEnd') {
                     echo 'Building the Angular frontend...'
-
-                    // runs the build commands, and then the container is removed.
-                    sh '''
-                        docker run --rm -v ${PWD}:/app -w /app node:20-alpine sh -c "npm install && npm run build -- --configuration production"
-                    '''
+                    // Use 'bat' for Windows instead of 'sh'
+                    bat 'docker run --rm -v "%cd%":/app -w /app node:20-alpine sh -c "npm install && npm run build -- --configuration production"'
                 }
             }
         }
@@ -51,11 +48,9 @@ pipeline {
             steps {
                 script {
                     echo 'Stopping any old containers and starting the new ones...'
-                    // This command stops any old versions of our app
-                    sh 'docker-compose down'
-                    
-                    // This command builds new Docker images and starts everything
-                    sh 'docker-compose up --build -d'
+                    // Use 'bat' for Windows instead of 'sh'
+                    bat 'docker-compose down'
+                    bat 'docker-compose up --build -d'
                 }
             }
         }

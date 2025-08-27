@@ -1,9 +1,13 @@
 // This is a simplified and more robust Jenkins pipeline for your project
 pipeline {
-    // Run on any available machine
-    agent any
+    agent {
+        docker {
+            image 'docker/compose:latest'
+            args '-v /var/run/docker.sock:/var/run/docker.sock'
+        }
+    }
 
-    // Define stages of our build process
+    // Define the stages of our build process
     stages {
         // Stage 1: Get the latest code from your repository
         stage('Checkout Code') {
@@ -20,7 +24,6 @@ pipeline {
             steps {
                 script {
                     echo 'Stopping any old containers...'
-                    // Use 'sh' for Linux instead of 'bat'
                     sh 'docker-compose down'
 
                     echo 'Building new images and starting all services...'

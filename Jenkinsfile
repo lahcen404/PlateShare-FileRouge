@@ -1,11 +1,7 @@
-// This is a simplified and more robust Jenkins pipeline for your project
+// This is the final, correct Jenkins pipeline for your project
 pipeline {
-    agent {
-        docker {
-            image 'docker/compose:latest'
-        args '-v /var/run/docker.sock:/var/run/docker.sock'
-    }
-}
+    // Run on any available machine
+    agent any
 
     // Define the stages of our build process
     stages {
@@ -19,11 +15,11 @@ pipeline {
         }
 
         // Stage 2: Build and Deploy the entire application
-        // This single stage uses docker-compose to build the images and run the containers.
         stage('Build and Deploy with Docker Compose') {
             steps {
                 script {
                     echo 'Stopping any old containers...'
+                    // Use 'sh' because the Jenkins container is Linux
                     sh 'docker-compose down'
 
                     echo 'Building new images and starting all services...'

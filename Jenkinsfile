@@ -1,8 +1,9 @@
+// This is a simplified and more robust Jenkins pipeline for your project
 pipeline {
     // Run on any available machine
     agent any
 
-    // Define the stages of our build process
+    // Define stages of our build process
     stages {
         // Stage 1: Get the latest code from your repository
         stage('Checkout Code') {
@@ -14,16 +15,16 @@ pipeline {
         }
 
         // Stage 2: Build and Deploy the entire application
-
+        // This single stage uses docker-compose to build the images and run the containers.
         stage('Build and Deploy with Docker Compose') {
             steps {
                 script {
                     echo 'Stopping any old containers...'
-                    // Use 'bat' for Windows instead of 'sh'
-                    bat 'docker-compose down'
+                    // Use 'sh' for Linux instead of 'bat'
+                    sh 'docker-compose down'
 
                     echo 'Building new images and starting all services...'
-                    bat 'docker-compose up --build -d'
+                    sh 'docker-compose up --build -d'
                 }
             }
         }

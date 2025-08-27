@@ -3,9 +3,9 @@ pipeline {
     agent {
         docker {
             image 'docker/compose:latest'
-            args '-v /var/run/docker.sock:/var/run/docker.sock'
-        }
+        args '-v /var/run/docker.sock:/var/run/docker.sock'
     }
+}
 
     // Define the stages of our build process
     stages {

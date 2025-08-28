@@ -5,7 +5,15 @@ pipeline {
 
     // Define the stages of our build process
     stages {
-        // Stage 1: Get the latest code from your repository
+        // Stage 1: Clean the Workspace
+        stage('Clean Workspace') {
+            steps {
+                echo 'Cleaning up the workspace before checkout...'
+                cleanWs()
+            }
+        }
+
+        // Stage 2: Get the latest code from your repository
         stage('Checkout Code') {
             steps {
                 echo 'Checking out code from source control...'
@@ -14,8 +22,7 @@ pipeline {
             }
         }
 
-        // Stage 2: Build and Deploy the entire application
-
+        // Stage 3: Build and Deploy the entire application
         stage('Build and Deploy with Docker Compose') {
             steps {
                 script {

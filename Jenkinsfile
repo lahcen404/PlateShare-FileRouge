@@ -1,25 +1,40 @@
+// This is the final, simplified Jenkins pipeline for your project
 pipeline {
+    // Run on any available machine
     agent any
 
+    // Define the stages of our build process
     stages {
+        // Stage 1: Clean the Workspace
         stage('Clean Workspace') {
             steps {
-                echo 'Cleaning workspace...'
+                echo 'Cleaning up the workspace before checkout...'
+                // This step deletes all files from the previous build to ensure a clean start
                 cleanWs()
             }
         }
 
+        // Stage 2: Get the latest code from your repository
         stage('Checkout Code') {
             steps {
-                echo 'Checking out code from Git...'
+                echo 'Checking out code from source control...'
+                // 'checkout scm' uses the Git repository you configured in the Jenkins job
                 checkout scm
             }
         }
 
-        stage('Build & Test') {
+        // Stage 3: Build and Deploy the entire application
+        // This single stage uses docker-compose to build the images and run the containers.
+        stage('Build and Deploy with Docker Compose') {
             steps {
-                echo 'Running build and tests...'
-                sh 'echo "Build/test commands go here"'
+                script {
+                    echo 'Stopping any old containers...'
+                    // Use 'sh' because your Jenkins container is running on Linux
+                    sh 'docker-compose down'
+
+                    echo 'Building new images and starting all services...'
+                    sh 'docker-compose up --build -d'
+                }
             }
         }
     }

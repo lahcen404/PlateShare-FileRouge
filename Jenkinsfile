@@ -1,7 +1,14 @@
-// This is the final, simplified Jenkins pipeline for your project
+// This Jenkins pipeline is specifically for building the backend application.
 pipeline {
     // Run on any available machine
     agent any
+
+    // Define the tools needed for this build.
+    // These must be configured in Jenkins > Manage Jenkins > Tools.
+    tools {
+        jdk 'jdk21'
+        maven 'maven3'
+    }
 
     // Define the stages of our build process
     stages {
@@ -9,7 +16,7 @@ pipeline {
         stage('Clean Workspace') {
             steps {
                 echo 'Cleaning up the workspace before checkout...'
-                // This step deletes all files from the previous build to ensure a clean start
+                // This step deletes all files from the previous build
                 cleanWs()
             }
         }
@@ -23,18 +30,24 @@ pipeline {
             }
         }
 
-        // Stage 3: Build and Deploy the entire application
-        // This single stage uses docker-compose to build the images and run the containers.
-        stage('Build and Deploy with Docker Compose') {
+        // Stage 3: Build the Spring Boot Backend
+        stage('Build Backend') {
             steps {
-                script {
-                    echo 'Stopping any old containers...'
-                    // Use 'sh' because your Jenkins container is running on Linux
-                    sh 'docker-compose down'
-
-                    echo 'Building new images and starting all services...'
-                    sh 'docker-compose up --build -d'
+                // Change directory into the backend folder
+                dir('PlateShare-BackEnd') {
+                    echo 'Building the Spring Boot backend...'
+                    // Run the Maven package command to build the .jar file
+                    sh 'mvn clean package -DskipTests'
                 }
+            }
+        }
+
+        // Stage 4: Archive the build artifact
+        stage('Archive Artifact') {
+            steps {
+                echo 'Archiving the build artifact...'
+                // This saves the compiled .jar file with the build results in Jenkins
+                archiveArtifacts artifacts: 'PlateShare-BackEnd/target/*.jar', fingerprint: true
             }
         }
     }

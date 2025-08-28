@@ -3,19 +3,17 @@ pipeline {
     // Run on any available machine
     agent any
 
-    // Pipeline options
-    options {
+ options {
         // This prevents Jenkins from doing an automatic checkout before the pipeline starts,
         skipDefaultCheckout(true)
     }
-
     // Define the stages of our build process
     stages {
         // Stage 1: Clean the Workspace
         stage('Clean Workspace') {
             steps {
                 echo 'Cleaning up the workspace before checkout...'
-                // This step deletes all files from the previous build to ensure a clean start.
+                // This step deletes all files from the previous build to ensure a clean start
                 cleanWs()
             }
         }
@@ -30,10 +28,12 @@ pipeline {
         }
 
         // Stage 3: Build and Deploy the entire application
+        // This single stage uses docker-compose to build the images and run the containers.
         stage('Build and Deploy with Docker Compose') {
             steps {
                 script {
                     echo 'Stopping any old containers...'
+                    // Use 'sh' because your Jenkins container is running on Linux
                     sh 'docker-compose down'
 
                     echo 'Building new images and starting all services...'

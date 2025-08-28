@@ -4,30 +4,22 @@ pipeline {
     stages {
         stage('Clean Workspace') {
             steps {
-                echo 'Cleaning up the workspace before checkout...'
+                echo 'Cleaning workspace...'
                 cleanWs()
             }
         }
 
         stage('Checkout Code') {
             steps {
-                echo 'Checking out code from source control...'
-                // This will checkout the code from the repository configured in the Jenkins job SCM
+                echo 'Checking out code from Git...'
                 checkout scm
             }
         }
 
-        stage('Build and Deploy with Docker Compose') {
+        stage('Build & Test') {
             steps {
-                script {
-                    echo 'Stopping any old containers...'
-                    // Run docker-compose down safely (ignore errors if no containers exist)
-                    sh 'docker-compose down || true'
-
-                    echo 'Building new images and starting all services...'
-                    // Build and start containers in detached mode
-                    sh 'docker-compose up --build -d'
-                }
+                echo 'Running build and tests...'
+                sh 'echo "Build/test commands go here"'
             }
         }
     }

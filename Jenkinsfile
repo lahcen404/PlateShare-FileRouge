@@ -1,13 +1,12 @@
-// This Jenkins pipeline is specifically for building the backend application.
+// This is the final, simplified Jenkins pipeline for your project
 pipeline {
     // Run on any available machine
     agent any
 
-    // Define the tools needed for this build.
-    // These must be configured in Jenkins > Manage Jenkins > Tools.
-    tools {
-        jdk 'jdk21'
-        maven 'maven3'
+    // Pipeline options
+    options {
+        // This prevents Jenkins from doing an automatic checkout before the pipeline starts,
+        skipDefaultCheckout(true)
     }
 
     // Define the stages of our build process
@@ -16,7 +15,7 @@ pipeline {
         stage('Clean Workspace') {
             steps {
                 echo 'Cleaning up the workspace before checkout...'
-                // This step deletes all files from the previous build
+                // This step deletes all files from the previous build to ensure a clean start.
                 cleanWs()
             }
         }
@@ -30,24 +29,16 @@ pipeline {
             }
         }
 
-        // Stage 3: Build the Spring Boot Backend
-        stage('Build Backend') {
+        // Stage 3: Build and Deploy the entire application
+        stage('Build and Deploy with Docker Compose') {
             steps {
-                // Change directory into the backend folder
-                dir('PlateShare-BackEnd') {
-                    echo 'Building the Spring Boot backend...'
-                    // Run the Maven package command to build the .jar file
-                    sh 'mvn clean package -DskipTests'
-                }
-            }
-        }
+                script {
+                    echo 'Stopping any old containers...'
+                    sh 'docker-compose down'
 
-        // Stage 4: Archive the build artifact
-        stage('Archive Artifact') {
-            steps {
-                echo 'Archiving the build artifact...'
-                // This saves the compiled .jar file with the build results in Jenkins
-                archiveArtifacts artifacts: 'PlateShare-BackEnd/target/*.jar', fingerprint: true
+                    echo 'Building new images and starting all services...'
+                    sh 'docker-compose up --build -d'
+                }
             }
         }
     }

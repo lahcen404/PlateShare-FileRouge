@@ -46,8 +46,12 @@ pipeline {
         stage('Build and Deploy with Docker Compose') {
             steps {
                 script {
-                    echo 'Stopping old containers...'
-                    sh "${COMPOSE_CMD} down"
+                    echo 'Removing conflicting container if it exists...'
+                    // Force remove the conflicting container if it exists
+                    sh "docker rm -f plateshare-db || true"
+
+                    echo 'Stopping old containers and cleaning volumes...'
+                    sh "${COMPOSE_CMD} down -v --remove-orphans"
 
                     echo 'Building and starting containers...'
                     sh "${COMPOSE_CMD} up --build -d"

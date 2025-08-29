@@ -1,43 +1,56 @@
-// This is the final, simplified Jenkins pipeline for your project
 pipeline {
-    // Run on any available machine
     agent any
 
- options {
-        // This prevents Jenkins from doing an automatic checkout before the pipeline starts,
+    options {
         skipDefaultCheckout(true)
     }
-    // Define the stages of our build process
+
+    environment {
+        COMPOSE_CMD = 'docker-compose'
+    }
+
     stages {
-        // Stage 1: Clean the Workspace
         stage('Clean Workspace') {
             steps {
-                echo 'Cleaning up the workspace before checkout...'
-                // This step deletes all files from the previous build to ensure a clean start
+                echo 'Cleaning workspace...'
                 cleanWs()
             }
         }
 
-        // Stage 2: Get the latest code from your repository
         stage('Checkout Code') {
             steps {
-                echo 'Checking out code from source control...'
-                // 'checkout scm' uses the Git repository you configured in the Jenkins job
+                echo 'Checking out code...'
                 checkout scm
             }
         }
 
-        // Stage 3: Build and Deploy the entire application
-        // This single stage uses docker-compose to build the images and run the containers.
+        stage('Detect Docker Compose Version') {
+            steps {
+                script {
+                    def hasComposeV1 = sh(script: 'command -v docker-compose', returnStatus: true) == 0
+                    if (!hasComposeV1) {
+                        def hasComposeV2 = sh(script: 'docker compose version', returnStatus: true) == 0
+                        if (hasComposeV2) {
+                            env.COMPOSE_CMD = 'docker compose'
+                            echo "Using Docker Compose v2"
+                        } else {
+                            error "Neither 'docker-compose' nor 'docker compose' is available on this Jenkins agent."
+                        }
+                    } else {
+                        echo "Using Docker Compose v1"
+                    }
+                }
+            }
+        }
+
         stage('Build and Deploy with Docker Compose') {
             steps {
                 script {
-                    echo 'Stopping any old containers...'
-                    // Use 'sh' because your Jenkins container is running on Linux
-                    sh 'docker-compose down'
+                    echo 'Stopping old containers...'
+                    sh "${COMPOSE_CMD} down"
 
-                    echo 'Building new images and starting all services...'
-                    sh 'docker-compose up --build -d'
+                    echo 'Building and starting containers...'
+                    sh "${COMPOSE_CMD} up --build -d"
                 }
             }
         }

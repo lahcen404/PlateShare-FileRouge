@@ -18,7 +18,7 @@ services:
     build: ./PlateShare-BackEnd
     restart: always
     ports:
-      - "8084:8084"
+      - "8085:8084"
     environment:
       SPRING_PROFILES_ACTIVE: docker
     depends_on:

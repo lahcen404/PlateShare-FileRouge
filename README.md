@@ -30,7 +30,7 @@ PlateShare est une application **web full stack** qui vise à réduire le gaspil
 - Authentification sécurisée avec **JWT**
 - Hashage des mots de passe (**BCrypt**)
 - Autorisations basées sur les rôles
-- Protection des routes backend & frontend
+- Protection des routes backend & frontend.
 
 ### 📦 Pour les Donateurs
 - Publication d'offres (type, quantité, expiration)
